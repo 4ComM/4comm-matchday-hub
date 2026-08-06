@@ -1,0 +1,5 @@
+# Custo é RESTRITO — nunca entra no repositório público (regra 8)
+Custo_Matchday*.xlsx
+build_hub.py
+*.xlsx
+.~lock*

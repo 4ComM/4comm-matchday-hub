@@ -1,0 +1,388 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hub Matchday · 4ComM</title>
+<meta name="description" content="Hub operacional das artes de matchday da 4ComM — pedido em 4 cliques, fila automática, criação de arte embutida.">
+<meta property="og:title" content="Hub Matchday · 4ComM">
+<meta property="og:description" content="Pedido em 4 cliques · fila automática · criação de arte embutida.">
+<meta property="og:image" content="https://4comm.github.io/4comm-matchday-hub/og-hub-matchday.jpg?v=1">
+<meta property="og:image:secure_url" content="https://4comm.github.io/4comm-matchday-hub/og-hub-matchday.jpg?v=1">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:type" content="website"><meta property="og:url" content="https://4comm.github.io/4comm-matchday-hub/">
+<meta property="og:locale" content="pt_BR"><meta property="og:site_name" content="4ComM">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Hub Matchday · 4ComM">
+<meta name="twitter:description" content="Pedido em 4 cliques · fila automática · criação de arte embutida."><meta name="twitter:image" content="https://4comm.github.io/4comm-matchday-hub/og-hub-matchday.jpg?v=1">
+<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#C8102E">
+<link rel="icon" type="image/png" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png">
+<style>
+:root{--red:#C8102E;--bg:#0c0c0e;--card:#16161a;--bd:#27272c;--tx:#f1f1f3;--mut:#98989f;--ok:#4fd18b;--warn:#f2c14e}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--tx);font:15px/1.5 'Segoe UI',system-ui,sans-serif;padding-bottom:80px}
+header{background:linear-gradient(115deg,#190a0f,#2c0b14 55%,#0c0c0e);border-bottom:3px solid var(--red);padding:20px 4vw 0}
+h1{font-size:24px}h1 b{color:var(--red)}
+.sub{color:var(--mut);font-size:12.5px;margin:4px 0 14px}
+.sub a{color:#8fc3ff;text-decoration:none}
+nav{display:flex;gap:2px;flex-wrap:wrap}
+nav button{background:transparent;border:0;color:var(--mut);padding:11px 14px;font-size:13.5px;font-weight:600;cursor:pointer;border-bottom:3px solid transparent}
+nav button.on{color:#fff;border-bottom-color:var(--red)}
+section{display:none;padding:22px 4vw 0}section.on{display:block}
+h2{font-size:14px;text-transform:uppercase;letter-spacing:2px;color:var(--red);margin:16px 0 10px;border-left:4px solid var(--red);padding-left:10px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:6px}
+.kpi{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px}
+.kpi .n{font-size:30px;font-weight:800}.kpi .l{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:1px}
+.kpi.alert .n{color:var(--warn)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--bd);border-radius:10px;overflow:hidden}
+td,th{padding:9px 11px;border-bottom:1px solid var(--bd);text-align:left;font-size:13px;vertical-align:top}
+th{background:#111114;color:var(--mut);font-size:10.5px;text-transform:uppercase;letter-spacing:1px;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+.tag{padding:2px 9px;border-radius:20px;font-size:11px;font-weight:700;white-space:nowrap}
+.esp{background:#3a0d18;color:#ff8fa3;border:1px solid #7c1d33}.basec{background:#122232;color:#8fc3ff;border:1px solid #234a6b}
+.pA{color:var(--ok);font-weight:700}.pM{color:var(--warn);font-weight:700}.pB{color:var(--mut)}.pC{color:#9ab}
+.warntx{color:var(--warn);font-size:12px}
+.note{background:#161114;border:1px solid #4a1d29;border-left:4px solid var(--red);border-radius:8px;padding:11px 15px;font-size:13px;color:#d8c4c9;margin:12px 0}
+.chip{display:inline-block;background:#1d1d22;border:1px solid var(--bd);border-radius:22px;padding:8px 16px;margin:4px 6px 4px 0;font-size:13.5px;cursor:pointer;user-select:none}
+.chip:hover{border-color:#555}.chip.on{border-color:var(--red);background:#241318;color:#fff}
+.chip.mini{padding:3px 11px;font-size:12px;cursor:default}.chip.done{opacity:.4}.chip.a{border-color:#7c1d33;color:#ff8fa3}
+label{display:block;font-size:10.5px;text-transform:uppercase;letter-spacing:1.2px;color:var(--mut);margin:12px 0 4px}
+input,select,textarea{width:100%;padding:10px;background:#1b1b1f;border:1px solid #313137;color:var(--tx);border-radius:8px;font-size:14.5px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.btn{margin-top:12px;padding:12px 20px;background:var(--red);color:#fff;border:0;border-radius:8px;font-weight:700;font-size:14px;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.sec{background:#232329}.btn.mini{padding:7px 12px;font-size:12px;margin:4px 6px 0 0}
+.btn.ok{background:#14532d}.btn.zap{background:#128c4a}
+.wstep{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px 18px;margin-bottom:14px}
+.wstep h3{font-size:13px;color:var(--mut);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px}
+.wstep h3 b{color:#fff;display:inline-block;background:var(--red);width:22px;height:22px;border-radius:50%;text-align:center;line-height:22px;margin-right:8px;font-size:12px}
+.gcard{background:#1b1b20;border:1px solid var(--bd);border-radius:10px;padding:12px 14px;margin:6px 0;cursor:pointer}
+.gcard:hover{border-color:#666}.gcard.on{border-color:var(--red);background:#221419}
+.gcard .t{font-weight:700;font-size:14.5px}.gcard .s{color:var(--mut);font-size:12px;margin-top:2px}
+.gcard .al{color:var(--warn);font-size:12px;margin-top:3px}
+.gA{color:#ff8fa3;font-weight:700;font-size:11px}
+.alertbox{background:#2b1608;border:1px solid #7a4a12;border-left:4px solid var(--warn);border-radius:8px;padding:11px 15px;font-size:13px;color:#ffd9a0;margin-top:12px}
+.okbox{background:#0d2418;border:1px solid #1d5c38;border-left:4px solid var(--ok);border-radius:8px;padding:11px 15px;font-size:13px;color:#a9e8c6;margin-top:12px}
+.okbox a{color:#8fc3ff}
+pre{background:#101013;border:1px solid var(--bd);border-radius:8px;padding:14px;font-size:13px;white-space:pre-wrap;margin-top:10px;font-family:Consolas,monospace}
+.search{max-width:340px;margin-bottom:12px}
+.src{font-size:11px;color:var(--mut)}
+.optout{background:#2b0f14}
+.dcard{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:14px 16px;margin:10px 0}
+.dcard .top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.dcard .jt{font-weight:700;font-size:15px}
+.dcard .meta{color:var(--mut);font-size:12.5px;margin-top:4px}
+.st{font-size:11px;padding:3px 10px;border-radius:5px;background:#222;border:1px solid var(--bd);white-space:nowrap;font-weight:700}
+.stNafila{background:#0f2418;color:#5ad18a}.stEmproducao{background:#302505;color:#f2c14e}
+.stEntregue{background:#12253a;color:#8fc3ff}.stRadar{background:#1c1c22;color:#9a9aa0}.stGuardada{background:#241a2e;color:#c7a6f2}.stPublicado{background:#0d2b22;color:#4fd18b}
+.lnk{color:#8fc3ff;text-decoration:none;font-weight:700;white-space:nowrap}
+.mini-ic{background:none;border:0;color:var(--mut);cursor:pointer;font-size:13px;padding:2px 4px}
+.mini-ic:hover{color:#fff}
+iframe{width:100%;height:1120px;border:1px solid var(--bd);border-radius:12px;background:#0b0b0d}
+.hidden{display:none!important}
+@media(max-width:760px){nav button{padding:10px 8px;font-size:12px} #sAg td:nth-child(5),#sAg th:nth-child(5){display:none} iframe{height:1400px}}
+</style></head><body>
+<header>
+<h1>HUB <b>MATCHDAY</b> · 4ComM</h1>
+<div class="sub">Pedido em 4 cliques · fila automática · criação de arte embutida · <span id="papelTxt"></span>
+ visão: <a href="?papel=gestor">gestor</a> · <a href="?papel=designer">designer</a> · <a href="?papel=marketing">marketing</a> · <a href="?">completa</a></div>
+<nav>
+<button class="on" data-t="sSem" onclick="tab('sSem',this)">Semana</button>
+<button data-t="sPed" onclick="tab('sPed',this)">＋ Pedido</button>
+<button data-t="sDes" onclick="tab('sDes',this)">Designers</button>
+<button data-t="sTpl" onclick="tab('sTpl',this);if(!document.getElementById('tplFrame').src)document.getElementById('tplFrame').src='template_central.html'">Criar arte</button>
+<button data-t="sAg" onclick="tab('sAg',this)">Agenda</button>
+<button data-t="sRod" onclick="tab('sRod',this)">Rodízio & Banco</button>
+<button data-t="sAtl" onclick="tab('sAtl',this)">Atletas</button>
+<button data-t="sReg" onclick="tab('sReg',this)">Regras</button>
+</nav>
+</header>
+
+<section id="sSem" class="on">
+<div class="kpis">
+<div class="kpi"><div class="n" id="kFila">—</div><div class="l">peças abertas</div></div>
+<div class="kpi alert"><div class="n" id="kSab">—</div><div class="l">caem no sábado</div></div>
+<div class="kpi"><div class="n" id="kEsp">—</div><div class="l">especiais / limite</div></div>
+<div class="kpi"><div class="n">D-2</div><div class="l">média não produz antes</div></div>
+</div>
+<h2>Fila oficial da semana</h2>
+<table><thead><tr><th>Dia/hora</th><th>Atleta</th><th>Jogo/competição</th><th>Designer</th><th>Status</th><th>Link</th></tr></thead><tbody id="tbFila"></tbody></table>
+<div class="note">Ordem automática: data do jogo → camada → probabilidade. Peça de sábado é produzida até quinta. "Publicado ✔" é o clique do marketing após postar. O ✎ na coluna Link registra/corrige o link da arte.</div>
+</section>
+
+<section id="sPed">
+<h2>Novo pedido — 4 cliques</h2>
+<div class="wstep"><h3><b>1</b>Quem está pedindo? <span class="src">— o gestor é o responsável pelo pedido</span></h3><div id="wGest"></div></div>
+<div class="wstep hidden" id="wsA"><h3><b>2</b>Qual atleta? <span class="src">— só a sua carteira</span></h3><div id="wAtl"></div></div>
+<div class="wstep hidden" id="wsJ"><h3><b>3</b>Qual jogo? <span class="src">— próximos jogos mapeados; clique e tudo se preenche</span></h3><div id="wJog"></div></div>
+<div class="wstep hidden" id="wsF"><h3><b>4</b>Conferir e enviar</h3>
+<div id="wAviso" class="alertbox" style="display:none"></div>
+<div class="row2"><div><label>Gestor</label><input id="pGestor" readonly></div><div><label>Atleta</label><input id="pAtletaTxt" readonly></div></div>
+<div class="row2"><div><label>Competição</label><input id="pComp"></div><div><label>Adversário</label><input id="pAdv"></div></div>
+<div class="row3"><div><label>Mando</label><select id="pMando"><option>Casa</option><option>Fora</option></select></div>
+<div><label>Data</label><input id="pData"></div><div><label>Horário</label><input id="pHora"></div></div>
+<label>Local</label><input id="pLocal">
+<div class="row3"><div><label>Marca (do cadastro)</label><input id="pMarca"></div>
+<div><label>Probabilidade</label><select id="pProb"><option value="">—</option><option>Alta</option><option>Média</option><option>Baixa</option></select></div>
+<div><label>Logo 4ComM</label><select id="pLogo"><option>Sim</option><option>Não</option></select></div></div>
+<div class="row2"><div><label>Camada</label><select id="pCamada"><option>Base</option><option>Especial</option></select></div>
+<div><label>Se especial: gatilho</label><select id="pGat"><option>A-importância</option><option>B-rodízio</option></select></div></div>
+<label>Observação</label><input id="pObs" placeholder="ex.: usar foto nova do media day">
+<button class="btn" onclick="gerar()">Registrar pedido</button>
+<a id="btnZap" class="btn zap" target="_blank" style="display:none">📲 Enviar no WhatsApp</a>
+<div id="okav" class="okbox" style="display:none"></div>
+<pre id="saida" style="display:none"></pre>
+<div class="row2"><button class="btn sec" onclick="copiarTexto(document.getElementById('saida').textContent)">Copiar mensagem (grupo)</button>
+<button class="btn sec" onclick="copiarTexto(window.__linha)">Copiar linha (planilha)</button></div>
+</div>
+</section>
+
+<section id="sDes">
+<h2>Área do designer</h2>
+<div class="row2" style="max-width:560px"><div><label>Eu sou</label><select id="dEu" onchange="setEu()"></select></div>
+<div><label>&nbsp;</label><div class="src" style="padding-top:12px">Sua fila, na ordem oficial. Pegar → produzir → entregar. Entregou errado? Dá para corrigir o link ou reabrir a produção.</div></div></div>
+<div id="dAviso" class="okbox" style="display:none"></div>
+<div id="dLista"></div>
+<div class="note">Jogo caiu? Use "Guardar no banco" — a peça vira estoque de reuso, não lixo. O botão 🎨 abre a Central de Templates já preenchida com o pedido.</div>
+</section>
+
+<section id="sTpl">
+<h2>Criar arte — Central de Templates (13 modelos)</h2>
+<iframe id="tplFrame" src=""></iframe>
+<div class="note">A central abre pré-carregada quando você vem de um pedido (botão 🎨 na área do designer). 13 modelos, cores por clube, símbolos, PNG 1080×1920.</div>
+</section>
+
+<section id="sAg">
+<h2>Agenda — todos os jogos futuros mapeados</h2>
+<input class="search" id="agBusca" placeholder="filtrar por atleta, clube, competição…" oninput="renderAgenda(this.value)">
+<table><thead><tr><th>Quando</th><th>Atleta</th><th>Competição · confronto</th><th>Local</th><th>Fonte</th><th>Prob.</th><th>Atenção</th></tr></thead><tbody id="tbAg"></tbody></table>
+<div class="note">Gerada automaticamente da base única de jogos (<code>data.js</code>) — é a mesma lista que alimenta o passo 3 do pedido, sem duplicação. Linhas "a definir" = pauta da reunião de segunda. Próximo passo: alimentar por sites de federação + indicações dos gestores via planilha do Drive.</div>
+</section>
+
+<section id="sRod">
+<h2>Rodízio de arte especial</h2><div id="rodBox"></div>
+<div class="note">Todo atleta: ~2 especiais/trimestre. * Aguirra entra após o anúncio.</div>
+<h2>Banco de artes guardadas</h2>
+<table><thead><tr><th>Atleta</th><th>Criada</th><th>Designer</th><th>Origem</th><th>Formato</th></tr></thead><tbody id="tbBanco"></tbody></table>
+</section>
+
+<section id="sAtl">
+<h2>Cadastro — trilha, marca e restrições <span class="src" id="atlCount"></span></h2>
+<input class="search" id="atlBusca" placeholder="filtrar…" oninput="renderAtl(this.value)">
+<table><thead><tr><th>Atleta</th><th>Cat/Tier</th><th>Clube</th><th>Gestor</th><th>Trilha</th><th>Marca</th><th>Alertas</th></tr></thead><tbody id="tbAtl"></tbody></table>
+<div class="note">Base: ScoutHub 2.0 (roster 03/08) + diagnóstico operacional 06/08. Atletas com gestor/trilha "(definir)" entraram do roster completo e precisam de carteira confirmada — regra 1: matchday para todos.</div>
+</section>
+
+<section id="sReg">
+<h2>As regras do jogo</h2>
+<table><tbody>
+<tr><td><b>Linha de base</b></td><td>Todo jogo de todo atleta tem peça — template, story. Sem exceção.</td></tr>
+<tr><td><b>Especial</b></td><td>6–8/semana. Gatilho A: final, semi, mata-mata, copa, internacional, clássico, estreia, seleção, retorno, marco. Gatilho B: rodízio (~2/tri por atleta). Destino proposto: feed.</td></tr>
+<tr><td><b>Probabilidade</b></td><td>Alta produz · Média semipronto (produz a partir de D-2) · Baixa não produz.</td></tr>
+<tr><td><b>Fila</b></td><td>Data do jogo → camada → probabilidade. Ninguém fura.</td></tr>
+<tr><td><b>Compliance</b></td><td>Logo 4ComM só após anúncio. Marca vem do cadastro. IA nunca em rosto de quem recusou. Vermelho nunca sob número.</td></tr>
+<tr><td><b>Jogo cortado</b></td><td>Aviso no próprio pedido. Arte pronta → banco. Publicada → sai do ar.</td></tr>
+<tr><td><b>Custo</b></td><td>Fechamento é da 4ComM; contagem do designer é conferência. Arquivo restrito — nunca neste hub.</td></tr>
+</tbody></table>
+</section>
+<script src="data.js"></script>
+<script>
+const D=window.__DATA;
+const $=id=>document.getElementById(id);
+const esc=s=>(s||'').toString().replace(/</g,'&lt;');
+const probCls=p=>(p||'').startsWith('Alta')?'pA':(p||'').startsWith('Média')?'pM':(p||'').startsWith('Baixa')?'pB':'pC';
+const stCls=s=>'st'+(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s/g,'');
+const GAT=/final|semi|decis|mata|copa do brasil|copa\b|uefa|conference|sul-?americana|libertadores|estreia|sele[çc][ãa]o|retorno|marco|100/i;
+const zap=t=>'https://wa.me/?text='+encodeURIComponent(t);
+// ---------- papéis por URL (?papel=gestor|designer|marketing) ----------
+const PAPEL=new URLSearchParams(location.search).get('papel');
+const PAPEL_TABS={gestor:['sSem','sPed','sAg','sAtl'],designer:['sSem','sDes','sTpl','sRod'],marketing:null};
+const PAPEL_HOME={gestor:'sPed',designer:'sDes',marketing:'sSem'};
+function aplicarPapel(){
+ if(!PAPEL||!(PAPEL in PAPEL_TABS))return;
+ $('papelTxt').textContent='papel: '+PAPEL+' · ';
+ const permitidas=PAPEL_TABS[PAPEL];
+ if(permitidas)document.querySelectorAll('nav button').forEach(b=>{if(!permitidas.includes(b.dataset.t))b.classList.add('hidden');});
+ const home=PAPEL_HOME[PAPEL];
+ if(home)tab(home,document.querySelector(`nav button[data-t=${home}]`));
+}
+// ---------- persistência local (morre quando o Apps Script entrar) ----------
+const LS={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set(k,v){localStorage.setItem(k,JSON.stringify(v))}};
+function allItems(){
+ const ov=LS.get('hub_ov',{});
+ const base=D.fila.map((r,i)=>({id:'f'+i,quando:r[0],atleta:r[1],comp:r[2],camada:r[3],prob:r[4],designer:r[5],status:r[6],obs:r[7],link:''}));
+ base.forEach(b=>{const o=ov[b.id];if(o)Object.assign(b,o);});
+ return base.concat(LS.get('hub_new',[]));
+}
+function saveItem(it){
+ if(it.id.startsWith('f')){const ov=LS.get('hub_ov',{});ov[it.id]={status:it.status,designer:it.designer,link:it.link,obs:it.obs};LS.set('hub_ov',ov);}
+ else{const nw=LS.get('hub_new',[]);const i=nw.findIndex(x=>x.id===it.id);if(i>=0)nw[i]=it;else nw.push(it);LS.set('hub_new',nw);}
+}
+function copiarTexto(t,aviso){navigator.clipboard.writeText(t).then(()=>{if(aviso){aviso.textContent='Copiado ✔';setTimeout(()=>aviso.textContent='',1800);}});}
+// ---------- tabs ----------
+function tab(t,btn){document.querySelectorAll('section').forEach(s=>s.classList.remove('on'));$(t).classList.add('on');
+document.querySelectorAll('nav button').forEach(b=>b.classList.remove('on'));if(btn)btn.classList.add('on');window.scrollTo(0,0);}
+// ---------- SEMANA (simplificada: dia/hora · atleta · jogo · designer · status · link) ----------
+function renderFila(){
+ const items=allItems().filter(x=>!['Cancelada'].includes(x.status));
+ $('tbFila').innerHTML=items.map(r=>{
+  const detalhe=`<span class="tag ${r.camada.includes('Especial')?'esp':'basec'}">${esc(r.camada)}</span> <span class="${probCls(r.prob)}">${esc(r.prob)}</span>${r.obs?` · <span class="warntx">${esc(r.obs)}</span>`:''}`;
+  let stCell=`<span class="st ${stCls(r.status)}">${esc(r.status)}</span>`;
+  if(r.status==='Entregue'&&PAPEL!=='designer')stCell+=` <button class="btn mini ok" onclick="publicar('${r.id}')">Publicado ✔</button>`;
+  if(r.status==='Publicado')stCell+=` <button class="mini-ic" title="voltar para Entregue" onclick="revertPub('${r.id}')">↩</button>`;
+  const lkCell=(r.link?`<a class="lnk" href="${esc(r.link)}" target="_blank">abrir ▸</a> `:'<span class="src">—</span> ')
+   +(['Entregue','Publicado','Em produção'].includes(r.status)?`<button class="mini-ic" title="registrar/corrigir link da arte" onclick="editLink('${r.id}')">✎</button>`:'');
+  return `<tr><td style="white-space:nowrap;font-weight:600">${esc(r.quando)}</td><td><b>${esc(r.atleta)}</b>${r.id.startsWith('n')?' <span class="src">novo·local</span>':''}</td>
+  <td>${esc(r.comp)}<br>${detalhe}</td><td>${esc(r.designer)}</td><td>${stCell}</td><td>${lkCell}</td></tr>`;}).join('');
+ $('kFila').textContent=items.filter(x=>['Na fila','Em produção','Radar'].includes(x.status)).length;
+ $('kSab').textContent=items.filter(x=>x.quando.includes('sáb')&&x.status!=='Entregue'&&x.status!=='Publicado').length;
+ $('kEsp').textContent=items.filter(x=>x.camada.includes('Especial')).length+' / 7';
+}
+function publicar(id){const it=allItems().find(x=>x.id===id);it.status='Publicado';saveItem(it);renderFila();renderDes();}
+function revertPub(id){const it=allItems().find(x=>x.id===id);it.status='Entregue';saveItem(it);renderFila();renderDes();}
+function editLink(id){const it=allItems().find(x=>x.id===id);const l=prompt('Link da arte (Drive/Dropbox):',it.link||'');if(l===null)return;it.link=l.trim();saveItem(it);renderFila();renderDes();}
+// ---------- PEDIDO (wizard gestor → atleta → jogo → confirmar) ----------
+let W={g:null,a:null,j:null};
+function wg(){ $('wGest').innerHTML=D.gestores.map(g=>`<span class="chip${W.g===g?' on':''}" onclick="selG('${g}')">${g}</span>`).join(''); }
+function selG(g){W.g=g;W.a=null;W.j=null;wg();wa();$('wsA').classList.remove('hidden');$('wsJ').classList.add('hidden');$('wsF').classList.add('hidden');}
+function wa(){
+ const meus=D.atletas.filter(a=>a[3]===W.g||(W.g==='Outro / marketing'&&(a[3]==='—'||a[3]==='(definir)'||!a[3])));
+ const lista=meus.length?meus:D.atletas;
+ $('wAtl').innerHTML=(meus.length?'':'<div class="src" style="margin-bottom:8px">Este gestor não tem carteira mapeada — mostrando todos.</div>')+
+  lista.map(a=>{
+  const off=a[6].includes('OPT-OUT');
+  return `<div class="gcard${W.a===a[0]?' on':''}${off?' optout':''}" onclick="${off?'':`selA('${a[0].replace(/'/g,"\\'")}')`}">
+  <div class="t">${a[0]} ${off?'<span class="gA">OPT-OUT — sem artes</span>':''}</div>
+  <div class="s">${a[1]} · ${a[2]} · trilha: ${a[4]} · marca: ${a[5]}</div>
+  ${a[6]&&!off?`<div class="al">⚠ ${a[6]}</div>`:''}</div>`;}).join('');
+}
+function selA(n){W.a=n;W.j=null;wa();wj();$('wsJ').classList.remove('hidden');$('wsF').classList.add('hidden');window.location.hash='#wsJ';}
+function wj(){
+ const js=D.jogos[W.a]||[];
+ $('wJog').innerHTML=js.map((j,i)=>{
+  const ga=j[8]===1||GAT.test(j[0]+' '+j[6]);
+  return `<div class="gcard${W.j===i?' on':''}" onclick="selJ(${i})">
+  <div class="t">${j[0]} · vs ${j[1]} ${ga?'<span class="gA">GATILHO A → especial</span>':''}</div>
+  <div class="s">${j[3]} ${j[4]!=='—'?'· '+j[4]:''} ${j[5]&&j[5]!=='—'?'· '+j[5]:''} · mando: ${j[2]}</div>
+  <div class="s">fonte: ${j[6]} · probabilidade sugerida: <span class="${probCls(j[7])}">${j[7]}</span></div></div>`;}).join('')
+  +`<div class="gcard${W.j==='m'?' on':''}" onclick="selJ('m')"><div class="t">＋ Outro jogo (manual)</div><div class="s">preencher os campos à mão</div></div>`;
+}
+function selJ(i){
+ W.j=i;wj();$('wsF').classList.remove('hidden');window.location.hash='#wsF';
+ const a=D.atletas.find(x=>x[0]===W.a)||[];
+ $('pGestor').value=W.g;$('pAtletaTxt').value=W.a;
+ $('pMarca').value=a[5]&&a[5]!=='—'?a[5]:'';
+ const naoAssinou=(a[6]||'').toLowerCase().includes('não assinou')||(a[6]||'').includes('sem logo');
+ $('pLogo').value=naoAssinou?'Não':'Sim';
+ let avisos=[];
+ if(naoAssinou)avisos.push('⚠ Atleta não anunciado — logo 4ComM travado em NÃO.');
+ if((a[6]||'').toLowerCase().includes('ia'))avisos.push('⚠ '+a[6]);
+ if(i==='m'){['pComp','pAdv','pData','pHora','pLocal'].forEach(k=>$(k).value='');$('pMando').value='Casa';$('pProb').value='';$('pCamada').value='Base';}
+ else{const j=(D.jogos[W.a]||[])[i];
+  $('pComp').value=j[0]!=='—'?j[0]:'';$('pAdv').value=j[1].includes('rodada')||j[1]==='—'?'':j[1];
+  $('pMando').value=j[2]==='Fora'?'Fora':'Casa';$('pData').value=j[3];$('pHora').value=j[4]!=='—'?j[4]:'';
+  $('pLocal').value=j[5]&&j[5]!=='—'&&j[5]!=='a confirmar'?j[5]:'';
+  $('pProb').value=j[7].startsWith('A confirmar')?'':j[7];
+  const ga=j[8]===1||GAT.test(j[0]+' '+j[6]);
+  $('pCamada').value=ga?'Especial':'Base';$('pGat').value='A-importância';
+  if(ga)avisos.push('Este jogo dispara o GATILHO A — camada sugerida: Especial.');}
+ $('wAviso').innerHTML=avisos.join('<br>');$('wAviso').style.display=avisos.length?'block':'none';
+ $('okav').style.display='none';$('saida').style.display='none';$('btnZap').style.display='none';
+}
+function gerar(){
+ const req=[['pComp','competição'],['pAdv','adversário'],['pData','data'],['pProb','probabilidade']];
+ for(const [k,n] of req){if(!$(k).value){$('wAviso').innerHTML='Falta: '+n;$('wAviso').style.display='block';return;}}
+ const msg=`*MATCHDAY* — pedido de ${$('pGestor').value}
+Atleta: ${$('pAtletaTxt').value}
+Competição: ${$('pComp').value}
+Adversário: ${$('pAdv').value}
+Mando: ${$('pMando').value}
+Data: ${$('pData').value}  ·  Horário: ${$('pHora').value||'—'}
+Local: ${$('pLocal').value||'—'}
+Marca: ${$('pMarca').value||'Sem marca'}
+Probabilidade: ${$('pProb').value}
+Logo 4ComM: ${$('pLogo').value}
+Camada: ${$('pCamada').value}${$('pCamada').value==='Especial'?' ('+$('pGat').value+')':''}
+Obs: ${$('pObs').value||'—'}`;
+ $('saida').textContent=msg;$('saida').style.display='block';
+ $('btnZap').href=zap(msg);$('btnZap').style.display='inline-block';
+ const a=D.atletas.find(x=>x[0]===W.a)||[];
+ const it={id:'n'+Date.now(),quando:$('pData').value+' '+($('pHora').value||''),atleta:W.a,
+  comp:$('pComp').value+' · '+$('pAdv').value+' ('+($('pMando').value==='Casa'?'C':'F')+')',
+  camada:$('pCamada').value==='Especial'?'Especial · '+($('pGat').value==='A-importância'?'A':'B'):'Base',
+  prob:$('pProb').value,designer:a[4]||'(definir)',status:$('pProb').value==='Baixa'?'Radar':'Na fila',obs:$('pObs').value||'',link:'',gestor:W.g};
+ saveItem(it);renderFila();renderDes();
+ const hoje=new Date(),dd=String(hoje.getDate()).padStart(2,'0'),mm=String(hoje.getMonth()+1).padStart(2,'0');
+ window.__linha=['',`${dd}/${mm}/2026`,hoje.toTimeString().slice(0,5),$('pGestor').value,W.a,$('pComp').value,$('pAdv').value,$('pMando').value,$('pData').value,$('pHora').value,$('pLocal').value,$('pMarca').value||'Sem marca',$('pLogo').value,$('pProb').value,$('pCamada').value,$('pCamada').value==='Especial'?$('pGat').value:'—',a[4]||'',it.status,'','','',$('pObs').value||''].join('\t');
+ $('okav').innerHTML='Pedido registrado na fila (deste aparelho). Envie direto no WhatsApp pelo botão verde — a mensagem já vai pronta, é só escolher o grupo.';$('okav').style.display='block';
+}
+// ---------- DESIGNERS ----------
+let DME=LS.get('hub_eu',null);
+function renderDesSel(){$('dEu').innerHTML='<option value="">— quem é você? —</option>'+D.designers.map(d=>`<option${DME===d?' selected':''}>${d}</option>`).join('');}
+function setEu(){DME=$('dEu').value||null;LS.set('hub_eu',DME);renderDes();}
+function avisoZap(txt,msg){$('dAviso').innerHTML=txt+` · <a href="${zap(msg)}" target="_blank">📲 abrir WhatsApp</a>`;$('dAviso').style.display='block';}
+function renderDes(){
+ const items=allItems().filter(x=>!['Cancelada','Publicado'].includes(x.status));
+ const meus=DME?items.filter(x=>(x.designer||'').includes(DME.split(' ')[0])):items;
+ $('dLista').innerHTML=(DME?'':'<div class="note">Escolha seu nome acima para ver só a sua trilha — ou veja a fila inteira abaixo.</div>')+
+ (meus.length?'':'<div class="src">Nada na sua fila agora. 🎉</div>')+
+ meus.map(it=>{
+  const a=D.atletas.find(x=>x[0]===it.atleta)||[];
+  const alerta=a[6]?`<div class="warntx" style="margin-top:4px">⚠ ${a[6]}</div>`:'';
+  const marca=a[5]&&a[5]!=='—'?` · marca: <b>${a[5]}</b>`:' · sem marca';
+  let acts='';
+  if(it.status==='Na fila'||it.status==='Radar') acts=`<button class="btn mini" onclick="pegar('${it.id}')">▶ Pegar (em produção)</button>`;
+  if(it.status==='Em produção') acts=`<button class="btn mini ok" onclick="entregar('${it.id}')">✔ Entregar arte</button><button class="btn mini sec" onclick="caiu('${it.id}')">Jogo caiu → banco</button>`;
+  if(it.status==='Entregue') acts=`<span class="src">entregue${it.link?' · <a class="lnk" href="'+esc(it.link)+'" target="_blank">arte ▸</a>':''}</span>
+   <button class="btn mini sec" onclick="editLink('${it.id}')">✎ Corrigir link</button><button class="btn mini sec" onclick="reabrir('${it.id}')">↩ Reabrir produção</button>`;
+  acts+=`<button class="btn mini sec" onclick="criarArte('${it.id}')">🎨 Abrir no template</button>`;
+  return `<div class="dcard"><div class="top"><div><div class="jt">${esc(it.atleta)} <span class="src">· ${esc(it.quando)}</span></div>
+  <div class="meta">${esc(it.comp)}${marca} · <span class="${probCls(it.prob)}">${esc(it.prob)}</span> · <span class="tag ${it.camada.includes('Especial')?'esp':'basec'}">${esc(it.camada)}</span></div>${alerta}</div>
+  <div><span class="st ${stCls(it.status)}">${esc(it.status)}</span></div></div><div>${acts}</div></div>`;}).join('');
+}
+function pegar(id){const it=allItems().find(x=>x.id===id);it.status='Em produção';if(DME)it.designer=DME;saveItem(it);renderDes();renderFila();
+ const m=`🎨 ${DME||'designer'} pegou: ${it.atleta} — ${it.quando} (em produção)`;copiarTexto(m,null);avisoZap('Status atualizado. Mensagem copiada',m);}
+function entregar(id){const it=allItems().find(x=>x.id===id);
+ const link=prompt('Link do arquivo (Drive/Dropbox) — ou deixe vazio se vai mandar no grupo:','');
+ it.status='Entregue';it.link=(link||'').trim();saveItem(it);renderDes();renderFila();
+ const m=`✅ Arte entregue: ${it.atleta} — ${it.quando}${it.link?'\n'+it.link:''}\n@gestor conferir marca, data e adversário antes de publicar.`;
+ copiarTexto(m,null);avisoZap('Entregue. Mensagem copiada',m);}
+function reabrir(id){const it=allItems().find(x=>x.id===id);it.status='Em produção';saveItem(it);renderDes();renderFila();
+ $('dAviso').innerHTML='Reaberta — voltou para "Em produção".';$('dAviso').style.display='block';}
+function caiu(id){const it=allItems().find(x=>x.id===id);it.status='Guardada';saveItem(it);renderDes();renderFila();
+ const m=`📦 Jogo caiu — arte de ${it.atleta} guardada no banco para reuso.`;copiarTexto(m,null);avisoZap('Guardada no banco. Mensagem copiada',m);}
+function criarArte(id){
+ const it=allItems().find(x=>x.id===id);const a=D.atletas.find(x=>x[0]===it.atleta)||[];
+ const conf=(it.comp.split('·')[1]||'').replace(/\(.\)/,'').trim();
+ LS.set('tpl_prefill',{atleta:it.atleta,handle:'',comp:(it.comp.split('·')[0]||'').trim(),conf:conf? (a[2]||'')+' x '+conf : '',data:it.quando,hora:'',local:'',marca:a[5]!=='—'?a[5]:'',clube:a[2]||'',logo:(a[6]||'').includes('não assinou')?'Não':'Sim'});
+ $('tplFrame').src='template_central.html?t='+Date.now();
+ tab('sTpl',document.querySelector('nav button[data-t=sTpl]'));
+}
+// ---------- AGENDA (derivada da base única de jogos) ----------
+function agendaRows(){
+ const rows=[];
+ for(const [atleta,js] of Object.entries(D.jogos)){
+  const a=D.atletas.find(x=>x[0]===atleta)||[];
+  js.forEach(j=>rows.push({quando:j[3],hora:j[4],atleta,comp:j[0],adv:j[1],mando:j[2],local:j[5],fonte:j[6],prob:j[7],gA:j[8]===1,alerta:a[6]||''}));
+ }
+ const key=r=>{const m=(r.quando||'').match(/(\d{1,2})\/(\d{2})/);return m?(+m[2])*100+(+m[1]):9999;};
+ rows.sort((x,y)=>key(x)-key(y)||x.atleta.localeCompare(y.atleta));
+ return rows;
+}
+function renderAgenda(f){f=(f||'').toLowerCase();
+ $('tbAg').innerHTML=agendaRows().filter(r=>!f||Object.values(r).join(' ').toLowerCase().includes(f)).map(r=>{
+  const att=[r.gA?'<span class="gA">gatilho A → especial</span>':'',esc(r.alerta)].filter(Boolean).join(' · ');
+  return `<tr${r.alerta.includes('OPT-OUT')||r.fonte.includes('NÃO produzir')||r.fonte.includes('preservado')?' style="opacity:.5"':''}>
+  <td style="white-space:nowrap;font-weight:600">${esc(r.quando)}<br><span class="src">${esc(r.hora)}</span></td>
+  <td><b>${esc(r.atleta)}</b></td><td>${esc(r.comp)}<br><span class="src">vs ${esc(r.adv)}${r.mando!=='—'?' ('+esc(r.mando)+')':''}</span></td>
+  <td class="src">${esc(r.local)}</td><td><span class="src">${esc(r.fonte)}</span></td>
+  <td class="${probCls(r.prob)}">${esc(r.prob)}</td><td class="warntx">${att}</td></tr>`;}).join('');}
+// ---------- ATLETAS / RODÍZIO ----------
+function renderAtl(f){f=(f||'').toLowerCase();
+ const lista=D.atletas.filter(a=>!f||a.join(' ').toLowerCase().includes(f));
+ $('atlCount').textContent='· '+D.atletas.length+' atletas';
+ $('tbAtl').innerHTML=lista.map(a=>
+ `<tr${a[6].includes('OPT-OUT')?' class="optout"':''}><td><b>${a[0]}</b></td><td>${a[1]}</td><td>${a[2]}</td><td>${a[3]}</td><td>${a[4]}</td><td>${a[5]}</td><td class="warntx">${a[6]}</td></tr>`).join('');}
+function renderRod(){
+ $('rodBox').innerHTML=D.rodizio.map(x=>{if(x.startsWith('—'))return `<div style="margin:10px 0 4px;color:var(--mut);font-size:12px">${x}</div>`;
+ const done=x.includes('(');const gA=x.includes('✓A');
+ return `<span class="chip mini${done?' done':''}${gA?' a':''}">${x.replace('✓A',' · especial A esta semana')}</span>`;}).join('');
+ $('tbBanco').innerHTML=D.banco.map(b=>`<tr><td><b>${b[0]}</b></td><td>${b[1]}</td><td>${b[2]}</td><td class="src">${b[3]}</td><td>${b[4]}</td></tr>`).join('');}
+// init
+wg();renderFila();renderDesSel();renderDes();renderAgenda('');renderAtl('');renderRod();aplicarPapel();
+if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+</script></body></html>

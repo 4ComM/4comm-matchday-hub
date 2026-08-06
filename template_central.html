@@ -1,0 +1,274 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Central de Templates · Matchday 4ComM</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0}
+body{background:#0b0b0d;color:#eee;font:14px 'Segoe UI',system-ui,sans-serif;display:flex;min-height:100vh}
+aside{width:340px;min-width:340px;background:#121215;border-right:1px solid #232328;padding:20px;overflow-y:auto;height:100vh;position:sticky;top:0}
+aside h1{font-size:17px}aside h1 b{color:#C8102E}
+aside p{color:#8b8b92;font-size:12px;margin:6px 0 14px}
+label{display:block;font-size:10.5px;text-transform:uppercase;letter-spacing:1.2px;color:#9a9aa2;margin:11px 0 4px}
+input,select{width:100%;padding:8px 10px;background:#1b1b1f;border:1px solid #303036;color:#eee;border-radius:7px;font-size:13.5px}
+input[type=file]{padding:6px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+button{margin-top:14px;width:100%;padding:13px;background:#C8102E;color:#fff;border:0;border-radius:8px;font-weight:700;font-size:14.5px;cursor:pointer}
+button.sec{background:#232328;font-weight:500;font-size:12.5px;padding:9px}
+main{flex:1;padding:22px;display:flex;flex-direction:column;align-items:center;gap:18px}
+.models{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;width:100%;max-width:840px}
+.mbtn{background:#161619;border:1px solid #2b2b31;border-radius:8px;padding:9px 4px;text-align:center;cursor:pointer;font-size:11px;color:#bbb}
+.mbtn small{display:block;font-size:9px;color:#77777e;margin-top:2px}
+.mbtn.on{border-color:#C8102E;color:#fff;background:#1d1216}
+.stage{transform:scale(.42);transform-origin:top center;height:calc(1920px*.42 + 10px)}
+#story{width:1080px;height:1920px;position:relative;overflow:hidden;background:var(--dark);font-family:'Segoe UI',system-ui,sans-serif;
+ --c1:#C8102E;--c2:#1a1a1a;--dark:#0c0c0e;--ink:#fff}
+#story .ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.sym{position:absolute;z-index:9}
+.foot{position:absolute;bottom:64px;left:0;width:100%;display:flex;align-items:center;justify-content:center;gap:34px;z-index:8}
+.l4{font-weight:900;font-size:40px;color:#fff;letter-spacing:.5px}.l4 i{font-style:normal;color:var(--c1)}
+.hand{font-size:30px;color:#cfcfcf;font-weight:600}
+.mk{font-size:28px;color:#bdbdbd;text-transform:uppercase;letter-spacing:3px;font-weight:600}
+</style></head><body>
+<aside>
+<h1>Central de Templates · <b>Matchday 4ComM</b></h1>
+<p>12 modelos, uma identidade. Escolha o modelo, o clube define as cores (ou ajuste à mão), preencha e baixe o PNG 1080×1920. Protótipo para reação do Possa — os modelos trocam de pele quando a identidade nova sair.</p>
+<label>Atleta</label><input id="fAtleta" value="FELLIPE LIMA">
+<label>@ do atleta (sticker embutido)</label><input id="fHandle" value="@fellipelima">
+<label>Competição</label><input id="fComp" value="Paulista U15">
+<label>Confronto (Mandante x Visitante)</label><input id="fConf" value="ÁGUA SANTA x EC SÃO BERNARDO">
+<div class="row2"><div><label>Data</label><input id="fData" value="SÁB · 08.08"></div>
+<div><label>Hora</label><input id="fHora" value="09H00"></div></div>
+<label>Local</label><input id="fLocal" value="Estádio do Taboão">
+<label>Clube (define as cores)</label><select id="fClube"></select>
+<div class="row2"><div><label>Cor primária</label><input type="color" id="fCor1" value="#C8102E" style="height:40px;padding:3px"></div>
+<div><label>Cor de apoio</label><input type="color" id="fCor2" value="#1a1a1a" style="height:40px;padding:3px"></div></div>
+<button class="sec" onclick="resetCores()">Voltar às cores do clube</button>
+<label>Símbolo</label><select id="fSym"><option value="nenhum">Nenhum</option><option value="trofeu">Troféu (final/decisão)</option><option value="estrela">Estrela (destaque)</option><option value="coroa">Coroa (campeão)</option><option value="raio">Raio (estreia)</option><option value="escudo">Escudo (clássico)</option><option value="chama">Chama (sequência/fase)</option></select>
+<label>Selo do modelo Carimbo</label><input id="fSelo" value="MATCHDAY" placeholder="MATCHDAY / FINAL / ESTREIA">
+<label>Marca / parceiro (do cadastro)</label><input id="fMarca" value="">
+<label>Logo 4ComM (só se anunciado)</label><select id="fLogo"><option>Sim</option><option>Não</option></select>
+<label>Foto do atleta</label><input type="file" id="fFile" accept="image/*">
+<button onclick="baixar()">Baixar PNG 1080×1920</button>
+</aside>
+
+<main><div class="models" id="models"></div>
+<div class="stage"><div id="story"></div></div></main>
+<script>
+const M = {};
+const esc = s => (s||'').replace(/</g,'&lt;');
+function bits(d){
+  const [tA,tB] = d.conf.split(/[x×]/i).map(s=>(s||'').trim());
+  return {tA:esc(tA.toUpperCase()), tB:esc(tB.toUpperCase()), comp:esc(d.comp.toUpperCase()), data:esc(d.data.toUpperCase()),
+          hora:esc(d.hora.toUpperCase()), local:esc(d.local), atleta:esc(d.atleta.toUpperCase()), handle:esc(d.handle)};
+}
+const foot = d => `<div class="foot">${d.logo4?'<span class="l4">4Com<i>M</i></span>':''}${d.handle?`<span class="hand">${esc(d.handle)}</span>`:''}${d.marca?`<span class="mk">${esc(d.marca)}</span>`:''}</div>`;
+const photo = d => d.foto?`<img class="ph" src="${d.foto}" style="${d.fx||''}">`:'';
+const SYMS = {
+ nenhum:'', trofeu:'M30 12h-4V8H10v4H6c0 7 4 11 8 12 1 2 2 3 4 3v3h-6v4h12v-4h-6v-3c2 0 3-1 4-3 4-1 8-5 8-12zM8 14h2c0 3 1 5 2 7-2-1-4-3-4-7zm20 0c0 4-2 6-4 7 1-2 2-4 2-7h2z',
+ estrela:'M18 3l4.6 9.3L33 13.8l-7.5 7.3 1.8 10.3L18 26.5 8.7 31.4l1.8-10.3L3 13.8l10.4-1.5z',
+ coroa:'M4 26h28l2-14-8 5-8-11-8 11-8-5zM6 29h24v4H6z',
+ raio:'M20 2L6 20h8l-2 14L26 15h-8z',
+ escudo:'M18 2l13 5v9c0 9-6 15-13 18C11 31 5 25 5 16V7z',
+ chama:'M18 2c2 6-6 8-4 14 1 3 4 4 4 4s-1-7 4-9c0 5 6 6 6 12a10 10 0 01-20 0C8 15 14 12 18 2z'
+};
+function symbol(d, extra){
+  if(!d.simbolo || d.simbolo==='nenhum') return '';
+  return `<svg class="sym" viewBox="0 0 36 36" style="width:120px;height:120px;fill:${d.symColor||'var(--c1)'};${extra||'top:90px;right:80px'}"><path d="${SYMS[d.simbolo]}"/></svg>`;
+}
+// util: overlay gradiente padrão
+const veil = (op1,op2) => `<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,${op1}) 0%,rgba(0,0,0,.05) 40%,rgba(0,0,0,${op2}) 80%)"></div>`;
+
+M.diagonal = d => { const b=bits(d); return `${photo(d)}${veil(.7,.9)}
+<div style="position:absolute;width:1500px;height:200px;background:var(--c1);transform:rotate(-16deg);top:210px;left:-170px;opacity:.94"></div>
+<div style="position:absolute;width:1500px;height:52px;background:var(--c2);transform:rotate(-16deg);top:436px;left:-140px;opacity:.75"></div>
+${symbol(d)}
+<div style="position:absolute;top:118px;width:100%;text-align:center;color:#fff;font-size:50px;font-weight:300;letter-spacing:12px">${b.comp}</div>
+<div style="position:absolute;bottom:470px;width:100%;text-align:center;color:#fff;font-size:86px;font-weight:900;line-height:1.1;text-shadow:0 4px 30px rgba(0,0,0,.85)">${b.tA}<div style="font-size:38px;font-weight:300;letter-spacing:8px;color:var(--c1);margin:6px 0">VS</div>${b.tB}</div>
+<div style="position:absolute;bottom:340px;width:100%;text-align:center;color:#eee;font-size:38px"><b>${b.data}</b> · ${b.hora} · ${b.local}</div>
+<div style="position:absolute;bottom:232px;width:100%;text-align:center;color:var(--c1);font-size:52px;font-weight:800;letter-spacing:4px">${b.atleta}</div>${foot(d)}`; };
+
+M.bloco = d => { const b=bits(d); return `${photo(d)}${veil(.55,.55)}
+<div style="position:absolute;top:730px;left:0;width:100%;background:var(--c1);padding:56px 0;text-align:center;box-shadow:0 0 80px rgba(0,0,0,.6)">
+<div style="color:rgba(255,255,255,.85);font-size:40px;letter-spacing:10px;font-weight:300">${b.comp}</div>
+<div style="color:#fff;font-size:92px;font-weight:900;margin-top:12px">${b.tA} <span style="font-weight:200">×</span> ${b.tB}</div>
+<div style="color:rgba(255,255,255,.9);font-size:40px;margin-top:14px">${b.data} · ${b.hora}</div></div>
+${symbol(d,'top:100px;left:80px')}
+<div style="position:absolute;bottom:300px;width:100%;text-align:center;color:#fff;font-size:36px">${b.local}</div>
+<div style="position:absolute;bottom:212px;width:100%;text-align:center;color:#fff;font-size:54px;font-weight:800;letter-spacing:4px">${b.atleta}</div>${foot(d)}`; };
+
+M.duplo = d => { const b=bits(d); return `
+<div style="position:absolute;inset:0;display:flex"><div style="flex:1;background:var(--c1)"></div><div style="flex:1;background:var(--c2)"></div></div>
+${d.foto?`<img class="ph" src="${d.foto}" style="mix-blend-mode:luminosity;opacity:.5">`:''}
+<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.75))"></div>
+<div style="position:absolute;top:140px;width:100%;text-align:center;color:#fff;font-size:46px;letter-spacing:14px;font-weight:300">${b.comp}</div>
+${symbol(d,'top:250px;left:calc(50% - 60px)')}
+<div style="position:absolute;top:46%;width:50%;text-align:center;color:#fff;font-size:96px;font-weight:900">${b.tA}</div>
+<div style="position:absolute;top:46%;right:0;width:50%;text-align:center;color:#fff;font-size:96px;font-weight:900">${b.tB}</div>
+<div style="position:absolute;top:calc(46% - 10px);left:calc(50% - 55px);width:110px;height:110px;border-radius:50%;background:#0c0c0e;border:4px solid #fff;color:#fff;display:flex;align-items:center;justify-content:center;font-size:40px;font-weight:800">VS</div>
+<div style="position:absolute;bottom:330px;width:100%;text-align:center;color:#fff;font-size:40px"><b>${b.data}</b> · ${b.hora} · ${b.local}</div>
+<div style="position:absolute;bottom:225px;width:100%;text-align:center;color:#fff;font-size:52px;font-weight:800;letter-spacing:5px;text-shadow:0 0 30px var(--c1)">${b.atleta}</div>${foot(d)}`; };
+
+M.moldura = d => { const b=bits(d); return `${photo(d)}${veil(.5,.8)}
+<div style="position:absolute;inset:70px;border:3px solid rgba(255,255,255,.9)"></div>
+<div style="position:absolute;inset:90px;border:1px solid var(--c1)"></div>
+${symbol(d,'top:130px;right:130px')}
+<div style="position:absolute;top:150px;left:0;width:100%;text-align:center;color:#fff;font-size:44px;letter-spacing:16px;font-weight:300">${b.comp}</div>
+<div style="position:absolute;bottom:520px;width:100%;text-align:center;color:#fff;font-size:80px;font-weight:800;line-height:1.15">${b.tA}<br><span style="color:var(--c1);font-size:44px;font-weight:300">vs</span><br>${b.tB}</div>
+<div style="position:absolute;bottom:395px;width:100%;text-align:center;color:#ddd;font-size:36px;letter-spacing:3px">${b.data} — ${b.hora}<br><span style="font-size:30px;color:#aaa">${b.local}</span></div>
+<div style="position:absolute;bottom:255px;width:100%;text-align:center;color:#fff;font-size:50px;font-weight:700;letter-spacing:6px;border-top:1px solid rgba(255,255,255,.35);padding-top:26px;width:60%;left:20%">${b.atleta}</div>${foot(d)}`; };
+
+M.versus = d => { const b=bits(d); return `${photo(d)}${veil(.6,.85)}
+<div style="position:absolute;top:32%;width:100%;text-align:center;color:var(--c1);font-size:420px;font-weight:900;opacity:.28;line-height:1">VS</div>
+<div style="position:absolute;top:130px;width:100%;text-align:center;color:#fff;font-size:48px;letter-spacing:10px;font-weight:300">${b.comp}</div>
+${symbol(d,'top:220px;left:calc(50% - 60px)')}
+<div style="position:absolute;top:37%;width:100%;text-align:center;color:#fff;font-size:110px;font-weight:900;text-shadow:0 6px 40px rgba(0,0,0,.9)">${b.tA}</div>
+<div style="position:absolute;top:52%;width:100%;text-align:center;color:#fff;font-size:110px;font-weight:900;text-shadow:0 6px 40px rgba(0,0,0,.9)">${b.tB}</div>
+<div style="position:absolute;bottom:320px;width:100%;text-align:center;color:#eee;font-size:40px"><b style="color:var(--c1)">${b.data}</b> · ${b.hora} · ${b.local}</div>
+<div style="position:absolute;bottom:222px;width:100%;text-align:center;color:#fff;font-size:52px;font-weight:800;letter-spacing:4px">${b.atleta}</div>${foot(d)}`; };
+
+M.tipo = d => { const b=bits(d); return `${photo(d)}${veil(.55,.85)}
+<div style="position:absolute;left:-40px;top:6%;writing-mode:vertical-rl;transform:rotate(180deg);color:rgba(255,255,255,.13);font-size:230px;font-weight:900;letter-spacing:-6px;white-space:nowrap">${b.atleta}</div>
+${symbol(d)}
+<div style="position:absolute;top:120px;left:110px;color:var(--c1);font-size:46px;font-weight:800;letter-spacing:6px">${b.comp}</div>
+<div style="position:absolute;bottom:480px;left:110px;color:#fff;font-size:96px;font-weight:900;line-height:1.12">${b.tA}<br><span style="color:var(--c1)">×</span> ${b.tB}</div>
+<div style="position:absolute;bottom:350px;left:110px;color:#ddd;font-size:38px">${b.data} · ${b.hora}<br><span style="font-size:31px;color:#999">${b.local}</span></div>
+<div style="position:absolute;bottom:235px;left:110px;color:#fff;font-size:54px;font-weight:800;letter-spacing:3px;border-left:10px solid var(--c1);padding-left:24px">${b.atleta}</div>${foot(d)}`; };
+
+M.rodape = d => { const b=bits(d); return `${photo(d)}
+<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25),transparent 45%)"></div>
+${symbol(d,'top:90px;right:90px')}
+<div style="position:absolute;top:110px;left:90px;color:#fff;font-size:44px;font-weight:300;letter-spacing:8px">${b.comp}</div>
+<div style="position:absolute;bottom:0;width:100%;background:linear-gradient(180deg,transparent, rgba(8,8,10,.96) 26%);padding:190px 90px 200px">
+<div style="color:#fff;font-size:88px;font-weight:900;line-height:1.1">${b.tA} <span style="color:var(--c1);font-weight:300">×</span> ${b.tB}</div>
+<div style="display:flex;gap:56px;margin-top:36px;color:#ddd;font-size:36px">
+<span><span style="color:var(--c1);font-weight:700">DATA</span>  ${b.data}</span>
+<span><span style="color:var(--c1);font-weight:700">HORA</span>  ${b.hora}</span></div>
+<div style="margin-top:16px;color:#999;font-size:32px">${b.local}</div>
+<div style="margin-top:40px;color:#fff;font-size:54px;font-weight:800;letter-spacing:3px">${b.atleta}</div></div>${foot(d)}`; };
+
+M.foco = d => { const b=bits(d); return `<div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 42%, var(--c2), #060608 75%)"></div>
+${d.foto?`<img class="ph" src="${d.foto}" style="opacity:.85;-webkit-mask-image:radial-gradient(circle at 50% 42%, #000 30%, transparent 68%);mask-image:radial-gradient(circle at 50% 42%, #000 30%, transparent 68%)">`:''}
+<div style="position:absolute;top:34%;left:calc(50% - 430px);width:860px;height:860px;border-radius:50%;border:3px solid var(--c1);opacity:.75"></div>
+<div style="position:absolute;top:calc(34% + 34px);left:calc(50% - 396px);width:792px;height:792px;border-radius:50%;border:1px solid rgba(255,255,255,.35)"></div>
+${symbol(d,'top:120px;left:calc(50% - 60px)')}
+<div style="position:absolute;top:250px;width:100%;text-align:center;color:#fff;font-size:46px;letter-spacing:12px;font-weight:300">${b.comp}</div>
+<div style="position:absolute;bottom:430px;width:100%;text-align:center;color:#fff;font-size:82px;font-weight:900">${b.tA} <span style="color:var(--c1);font-weight:200">×</span> ${b.tB}</div>
+<div style="position:absolute;bottom:322px;width:100%;text-align:center;color:#ccc;font-size:37px">${b.data} · ${b.hora} · ${b.local}</div>
+<div style="position:absolute;bottom:218px;width:100%;text-align:center;color:var(--c1);font-size:52px;font-weight:800;letter-spacing:5px">${b.atleta}</div>${foot(d)}`; };
+
+M.recorte = d => { const b=bits(d); return `<div style="position:absolute;inset:0;background:var(--c2)"></div>
+<div style="position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent 0 34px, rgba(255,255,255,.03) 34px 36px)"></div>
+<div style="position:absolute;top:190px;left:100px;width:880px;height:1100px;background:var(--c1);transform:rotate(-3deg)"></div>
+<div style="position:absolute;top:170px;left:120px;width:880px;height:1100px;overflow:hidden;transform:rotate(2deg);border:6px solid #fff;background:#111">${d.foto?`<img src="${d.foto}" style="width:100%;height:100%;object-fit:cover">`:''}</div>
+${symbol(d,'top:120px;right:100px;fill:#fff')}
+<div style="position:absolute;top:90px;left:120px;color:#fff;font-size:42px;font-weight:300;letter-spacing:8px">${b.comp}</div>
+<div style="position:absolute;bottom:440px;width:100%;text-align:center;color:#fff;font-size:78px;font-weight:900">${b.tA} <span style="opacity:.55;font-weight:200">×</span> ${b.tB}</div>
+<div style="position:absolute;bottom:340px;width:100%;text-align:center;color:rgba(255,255,255,.85);font-size:36px">${b.data} · ${b.hora} · ${b.local}</div>
+<div style="position:absolute;bottom:235px;width:100%;text-align:center;color:#fff;font-size:52px;font-weight:800;letter-spacing:5px;text-decoration:underline;text-decoration-color:var(--c1);text-underline-offset:16px">${b.atleta}</div>${foot(d)}`; };
+
+M.clean = d => { const b=bits(d); return `<div style="position:absolute;inset:0;background:#f4f2ee"></div>
+${d.foto?`<img class="ph" src="${d.foto}" style="height:58%;top:0;object-fit:cover;filter:saturate(.92)">`:'<div style="position:absolute;top:0;width:100%;height:58%;background:#d9d5cd"></div>'}
+<div style="position:absolute;top:calc(58% - 120px);width:100%;height:120px;background:linear-gradient(transparent,#f4f2ee)"></div>
+${symbol(d,'top:calc(58%);right:110px;width:90px;height:90px')}
+<div style="position:absolute;top:calc(58% + 40px);left:110px;color:#1c1c1c;font-size:40px;letter-spacing:8px;font-weight:400">${b.comp}</div>
+<div style="position:absolute;top:calc(58% + 120px);left:110px;color:#111;font-size:88px;font-weight:800;line-height:1.1">${b.tA}<br><span style="color:var(--c1);font-size:46px;font-weight:400">vs</span> ${b.tB}</div>
+<div style="position:absolute;bottom:330px;left:110px;color:#444;font-size:36px">${b.data} · ${b.hora}<br><span style="color:#8a8a86;font-size:30px">${b.local}</span></div>
+<div style="position:absolute;bottom:225px;left:110px;color:#111;font-size:50px;font-weight:700;letter-spacing:2px">${b.atleta}</div>
+<div class="foot" style="filter:invert(1) hue-rotate(180deg)">${d.logo4?'<span class="l4">4Com<i style="color:var(--c1)">M</i></span>':''}${d.handle?`<span class="hand">${esc(d.handle)}</span>`:''}${d.marca?`<span class="mk">${esc(d.marca)}</span>`:''}</div>`; };
+
+M.carimbo = d => { const b=bits(d); return `${photo(d)}${veil(.6,.88)}
+<div style="position:absolute;inset:56px;border:4px dashed rgba(255,255,255,.5)"></div>
+<div style="position:absolute;top:120px;left:calc(50% - 210px);width:420px;height:150px;border:6px solid var(--c1);transform:rotate(-7deg);display:flex;align-items:center;justify-content:center;color:var(--c1);font-size:52px;font-weight:900;letter-spacing:6px;text-transform:uppercase">${d.selo||'MATCHDAY'}</div>
+${symbol(d,'top:310px;right:120px')}
+<div style="position:absolute;top:360px;width:100%;text-align:center;color:#fff;font-size:42px;letter-spacing:10px;font-weight:300">${b.comp}</div>
+<div style="position:absolute;bottom:480px;width:100%;text-align:center;color:#fff;font-size:84px;font-weight:900;line-height:1.15">${b.tA}<br><span style="color:var(--c1);font-weight:300;font-size:44px">×</span> ${b.tB}</div>
+<div style="position:absolute;bottom:365px;width:100%;text-align:center;color:#ddd;font-size:37px">${b.data} · ${b.hora} · ${b.local}</div>
+<div style="position:absolute;bottom:240px;width:100%;text-align:center;color:#fff;font-size:54px;font-weight:800;letter-spacing:4px">${b.atleta}</div>${foot(d)}`; };
+
+M.premium = d => { const b=bits(d); return `${photo(d)}
+<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,4,8,.82),rgba(4,4,8,.25) 42%,rgba(4,4,8,.95) 78%)"></div>
+<div style="position:absolute;inset:44px;border:1px solid rgba(212,175,55,.65)"></div>
+<div style="position:absolute;top:44px;left:44px;width:120px;height:120px;border-left:5px solid #d4af37;border-top:5px solid #d4af37"></div>
+<div style="position:absolute;bottom:44px;right:44px;width:120px;height:120px;border-right:5px solid #d4af37;border-bottom:5px solid #d4af37"></div>
+${symbol(d,'top:130px;left:calc(50% - 60px);fill:#d4af37')}
+<div style="position:absolute;top:280px;width:100%;text-align:center;color:#d4af37;font-size:44px;letter-spacing:18px;font-weight:400">${b.comp}</div>
+<div style="position:absolute;bottom:500px;width:100%;text-align:center;color:#fff;font-size:92px;font-weight:900;line-height:1.12;text-shadow:0 4px 40px rgba(0,0,0,.9)">${b.tA}<br><span style="color:#d4af37;font-size:42px;font-weight:300;letter-spacing:10px">VERSUS</span><br>${b.tB}</div>
+<div style="position:absolute;bottom:375px;width:100%;text-align:center;color:#e8e0c8;font-size:38px;letter-spacing:2px">${b.data} · ${b.hora} · ${b.local}</div>
+<div style="position:absolute;bottom:245px;width:100%;text-align:center;color:#fff;font-size:56px;font-weight:800;letter-spacing:6px;border-top:1px solid rgba(212,175,55,.5);width:56%;left:22%;padding-top:28px">${b.atleta}</div>${foot(d)}`; };
+
+M.duotone = d => { const b=bits(d); return `<div style="position:absolute;inset:0;background:var(--c1)"></div>
+${d.foto?`<img class="ph" src="${d.foto}" style="filter:grayscale(1) contrast(1.15);mix-blend-mode:multiply;opacity:.9">`:''}
+<div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.72))"></div>
+<div style="position:absolute;top:0;left:0;width:100%;height:150px;background:var(--c2);display:flex;align-items:center;justify-content:center;color:#fff;font-size:44px;letter-spacing:12px;font-weight:300">${b.comp}</div>
+${symbol(d,'top:210px;right:90px;fill:#fff')}
+<div style="position:absolute;bottom:450px;width:100%;text-align:center;color:#fff;font-size:90px;font-weight:900;line-height:1.1">${b.tA}<br>${b.tB}</div>
+<div style="position:absolute;bottom:585px;width:100%;text-align:center;color:rgba(255,255,255,.75);font-size:40px;font-weight:300;letter-spacing:6px"></div>
+<div style="position:absolute;bottom:345px;width:100%;text-align:center;color:#fff;font-size:38px;opacity:.92">${b.data} · ${b.hora} · ${b.local}</div>
+<div style="position:absolute;bottom:230px;width:100%;text-align:center;color:#fff;font-size:56px;font-weight:800;letter-spacing:4px;background:rgba(0,0,0,.35);padding:10px 0">${b.atleta}</div>${foot(d)}`; };
+
+const CLUBES = {
+ "4ComM (padrão)":["#C8102E","#1a1a1a"],
+ "Palmeiras":["#006437","#0c2b1d"],"Santos":["#1a1a1a","#3a3a3a"],"São Paulo":["#d20000","#1a1a1a"],
+ "Athletico-PR":["#c8102e","#141414"],"Avaí":["#005baa","#0c2036"],"Bahia":["#0066b3","#ed1c24"],
+ "Fortaleza":["#1c5bab","#ed3237"],"Cruzeiro":["#003da5","#0a1e46"],"RB Bragantino":["#e30613","#1a1a1a"],
+ "Guarani":["#006c4f","#0d3327"],"Londrina":["#0055a5","#0d2440"],"Ceará":["#1a1a1a","#4a4a4a"],
+ "Corinthians":["#1a1a1a","#3a3a3a"],"CSKA Moscou":["#c8102e","#003da5"],"DC United":["#ee1b39","#141414"],
+ "Vitória":["#e30613","#1a1a1a"],"Remo":["#003da5","#0a1e46"],"Juventude":["#009846","#0d3d24"],
+ "Real Betis":["#0bb363","#0c3d28"],"Água Santa":["#00693e","#123"],"Internacional":["#e5050f","#1a1a1a"],
+ "Grêmio":["#0d80bf","#0c2c40"],"Flamengo":["#e30613","#1a1a1a"],"Botafogo-SP":["#1a1a1a","#3a3a3a"],
+ "Santo André":["#8c6d1f","#1a1a1a"],"Ibrachina":["#e87722","#1a1a1a"],"Paris FC":["#003da5","#1a1a1a"],
+ "Ballkani":["#5b2d8e","#1a1a1a"],"Portuguesa":["#e30613","#0d5c2f"]
+};
+const ORDER=[["diagonal","Diagonal","o atual"],["bloco","Bloco","faixa central"],["duplo","Duelo","split 2 cores"],
+["moldura","Moldura","elegante"],["versus","Versus","VS gigante"],["tipo","Tipográfico","nome vertical"],
+["rodape","Rodapé","info em bloco"],["foco","Foco","spotlight circular"],["recorte","Recorte","polaroid torta"],
+["clean","Clean","claro — p/ Marcelo"],["carimbo","Carimbo","selo + tracejado"],["premium","Premium","gatilho A / dourado"]];
+ORDER.push(["duotone","Duotone","foto monocromática"]);
+let cur="diagonal";
+function state(){
+ return {atleta:fAtleta.value, comp:fComp.value, conf:fConf.value, data:fData.value, hora:fHora.value,
+  local:fLocal.value, marca:fMarca.value, handle:fHandle.value, logo4:fLogo.value==="Sim",
+  simbolo:fSym.value, selo:fSelo.value, foto:window.__foto||""};
+}
+function paint(){
+ const d=state(); const s=document.getElementById('story');
+ const [c1,c2]=CLUBES[fClube.value]||CLUBES["4ComM (padrão)"];
+ s.style.setProperty('--c1', fCor1.value!=='#000001'?fCor1.value:c1);
+ s.style.setProperty('--c1', fCor1.dataset.touched? fCor1.value : c1);
+ s.style.setProperty('--c2', fCor2.dataset.touched? fCor2.value : c2);
+ if(!fCor1.dataset.touched) fCor1.value=c1;
+ if(!fCor2.dataset.touched) fCor2.value=c2;
+ s.innerHTML = M[cur](d);
+ document.querySelectorAll('.mbtn').forEach(b=>b.classList.toggle('on', b.dataset.m===cur));
+}
+function buildModels(){
+ const box=document.getElementById('models');
+ box.innerHTML=ORDER.map(([k,n,s])=>`<div class="mbtn" data-m="${k}" onclick="cur='${k}';paint()">${n}<small>${s}</small></div>`).join('');
+}
+document.addEventListener('input', e=>{
+ if(e.target.id==='fCor1'||e.target.id==='fCor2') e.target.dataset.touched=1;
+ if(e.target.id==='fClube'){delete fCor1.dataset.touched; delete fCor2.dataset.touched;}
+ if(e.target.id==='fFile'){const r=new FileReader(); r.onload=ev=>{window.__foto=ev.target.result;paint();}; r.readAsDataURL(e.target.files[0]); return;}
+ paint();
+});
+async function baixar(){
+ const n=document.getElementById('story');
+ const c=await html2canvas(n,{scale:1,width:1080,height:1920,backgroundColor:'#0c0c0e',useCORS:true});
+ const a=document.createElement('a');
+ a.download='matchday_'+(fAtleta.value||'atleta').replace(/\s+/g,'_').toLowerCase()+'_'+cur+'.png';
+ a.href=c.toDataURL('image/png'); a.click();
+}
+function resetCores(){delete fCor1.dataset.touched; delete fCor2.dataset.touched; paint();}
+buildModels(); paint();
+
+const sel=document.getElementById('fClube');
+sel.innerHTML=Object.keys(CLUBES).map(c=>`<option${c==='Água Santa'?' selected':''}>${c}</option>`).join('');
+paint();
+
+try{const p=JSON.parse(localStorage.getItem('tpl_prefill'));
+if(p){ if(p.atleta)fAtleta.value=p.atleta; if(p.handle)fHandle.value=p.handle;
+ if(p.comp)fComp.value=p.comp; if(p.conf)fConf.value=p.conf; if(p.data)fData.value=p.data;
+ if(p.hora)fHora.value=p.hora; if(p.local)fLocal.value=p.local; if(p.marca)fMarca.value=p.marca;
+ if(p.logo)fLogo.value=p.logo;
+ if(p.clube){const k=Object.keys(CLUBES).find(c=>p.clube.toLowerCase().includes(c.toLowerCase())||c.toLowerCase().includes(p.clube.toLowerCase())); if(k)fClube.value=k;}
+ localStorage.removeItem('tpl_prefill'); paint(); }}catch(e){}
+</script></body></html>
