@@ -192,6 +192,11 @@ const zap=t=>'https://wa.me/?text='+encodeURIComponent(t);
 function diasAte(q){const m=(q||'').match(/(\d{1,2})\/(\d{2})/);if(!m)return null;
  const h=new Date(),hoje0=new Date(h.getFullYear(),h.getMonth(),h.getDate());
  return Math.round((new Date(h.getFullYear(),+m[2]-1,+m[1])-hoje0)/864e5);}
+// o dia da semana é sempre derivado da data — nunca do texto salvo, que já veio errado do registro manual
+const DIAS=['dom','seg','ter','qua','qui','sex','sáb'];
+function quandoTxt(q){const m=(q||'').match(/(\d{1,2})\/(\d{2})/);if(!m)return q;
+ const dt=new Date(new Date().getFullYear(),+m[2]-1,+m[1]);
+ return DIAS[dt.getDay()]+' '+(q||'').slice(m.index);}
 // ---------- papéis por URL (?papel=gestor|designer|marketing) ----------
 const PAPEL=new URLSearchParams(location.search).get('papel');
 const PAPEL_TABS={gestor:['sSem','sPed','sAg','sAtl'],designer:['sSem','sDes','sTpl','sRod'],marketing:null};
@@ -230,7 +235,7 @@ function renderFila(){
   if(r.status==='Publicado')stCell+=` <button class="mini-ic" title="voltar para Entregue" onclick="revertPub('${r.id}')">↩</button>`;
   const lkCell=(r.link?`<a class="lnk" href="${esc(r.link)}" target="_blank">abrir ▸</a> `:'<span class="src">—</span> ')
    +(['Entregue','Publicado','Em produção'].includes(r.status)?`<button class="mini-ic" title="registrar/corrigir link da arte" onclick="editLink('${r.id}')">✎</button>`:'');
-  return `<tr><td style="white-space:nowrap;font-weight:600">${esc(r.quando)}</td><td><b>${esc(r.atleta)}</b>${r.id.startsWith('n')?' <span class="src">novo·local</span>':''}</td>
+  return `<tr><td style="white-space:nowrap;font-weight:600">${esc(quandoTxt(r.quando))}</td><td><b>${esc(r.atleta)}</b>${r.id.startsWith('n')?' <span class="src">novo·local</span>':''}</td>
   <td>${esc(r.comp)}<br>${detalhe}</td><td>${esc(r.designer)}</td><td>${stCell}</td><td>${lkCell}</td></tr>`;}).join('');
  const pend=items.filter(x=>{const dd=diasAte(x.quando);return dd!==null&&dd>=0&&dd<=3&&(x.prob==='A confirmar'||x.status==='Radar');});
  $('confAlert').innerHTML=pend.length?'<div class="alertbox"><b>📣 Confirmações pendentes — jogo em até 72h:</b><br>'+pend.map(p=>{
@@ -342,7 +347,7 @@ function renderDes(){
   acts+=`<button class="btn mini sec" onclick="criarArte('${it.id}')">🎨 Abrir no template</button>`;
   const dd=diasAte(it.quando);
   const prazo=dd===null?'':dd<0?' · <span class="warntx">jogo já passou</span>':dd===0?' · <span class="warntx">JOGO HOJE</span>':dd<=2?` · <span class="warntx">jogo em ${dd}d</span>`:` · <span class="src">jogo em ${dd}d</span>`;
-  return `<div class="dcard"><div class="top"><div><div class="jt">${esc(it.atleta)} <span class="src">· ${esc(it.quando)}</span>${prazo}</div>
+  return `<div class="dcard"><div class="top"><div><div class="jt">${esc(it.atleta)} <span class="src">· ${esc(quandoTxt(it.quando))}</span>${prazo}</div>
   <div class="meta">${esc(it.comp)}${marca} · <span class="${probCls(it.prob)}">${esc(it.prob)}</span> · <span class="tag ${it.camada.includes('Especial')?'esp':'basec'}">${esc(it.camada)}</span></div>${alerta}</div>
   <div><span class="st ${stCls(it.status)}">${esc(it.status)}</span></div></div><div>${acts}</div></div>`;}).join('');
 }
