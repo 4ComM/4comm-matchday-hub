@@ -1,13 +1,13 @@
 // ============================================================
 // data.js — FONTE ÚNICA de dados do Hub Matchday 4ComM (gerado)
-// Fontes: aba 03 ELENCO do Radar (carteira 27/07) · calendário
-// PARTIDAS (Google) · ogol 06/08 (profissional) · API FPF 06/08
-// (base paulista) · API CBF/GWEB 06/08 (Brasileirão Sub-17).
+// Fontes: ELENCO do Radar (carteira 27/07) · calendário PARTIDAS
+// ogol (pro) · API FPF (base SP) · API CBF (Brasileirão Sub-17)
+// FMF ProxJogos.aspx (Mineiro) · FGF competicoes (Gaúcho).
 // Formato atletas: [nome, cat/tier, clube, gestor, trilha, marca, obs, apelido, equipes[]]
 // Formato jogos:   [competição, adversário, mando, data, hora, local, fonte, prob, gatilhoA]
 // ============================================================
 window.__DATA = {
-"gerado": "06/08/2026 · carteira 27/07 + PARTIDAS + ogol + FPF + CBF Sub-17",
+"gerado": "06/08/2026 · PARTIDAS + ogol + FPF + CBF + FMF + FGF",
 "atletas": [
 ["Gabigol", "Pro T2A", "Santos", "Junior Pedroso", "Felipe Salles", "—", "emprestado pelo Cruzeiro", "Gabriel Barbosa", []],
 ["Pablo Maia", "Pro T2A", "São Paulo", "Felipe Guimarães", "Felipe Salles", "Adidas", "", "", []],
@@ -154,8 +154,8 @@ window.__DATA = {
 "Luiz Gusttavo": [["Paulistão Sub-20", "São Bento", "Casa", "07/08", "15:00", "CT Rei Pelé", "calendário PARTIDAS", "Média", 0], ["Paulistão Sub-17", "Mauá", "Casa", "08/08", "11:00", "CT Rei Pelé", "calendário PARTIDAS · 2º jogo do fds — confirmar", "A confirmar", 0], ["Brasileirão Sub-17", "Red Bull Bragantino", "Fora", "11/08", "15:00", "CT Red Bull Bragantino  · Atibaia-SP", "CBF R11 · 1ª Fase", "A confirmar", 0], ["Paulista Sub-20", "Itapirense", "Fora", "14/08", "17:15", "Coronel Francisco Vieira · Itapira", "FPF R12", "A confirmar", 0], ["Brasileirão Sub-17", "Internacional", "Casa", "18/08", "15:00", "Ct Rei Pelé · Santos-SP", "CBF R12 · 1ª Fase", "A confirmar", 0], ["Paulista Sub-20", "América", "Casa", "21/08", "15:00", "CT Rei Pelé - Campo I · Santos", "FPF R13", "A confirmar", 0], ["Paulista Sub-20", "AA Portuguesa", "Fora", "04/09", "15:00", "Ulrico Mursa · Santos", "FPF R14", "A confirmar", 0], ["Paulista Sub-20", "Mirassol", "Casa", "12/09", "15:00", "CT Rei Pelé - Campo I · Santos", "FPF R15", "A confirmar", 0]],
 "Cauã Rodrigues": [["Paulistão Sub-17", "Mauá", "Casa", "08/08", "11:00", "CT Rei Pelé", "calendário PARTIDAS · com Tiago Barros e Luiz Gusttavo", "Alta", 0]],
 "Diogo Oliveira": [["Paulistão Sub-15", "rodada", "—", "sáb 15/08", "09:00", "a confirmar", "recorrência sáb 09h", "A confirmar", 0]],
-"Luiz Felipe": [["Gauchão Sub-15", "Progresso", "Casa", "08/08", "15:00", "CT do Juventude, Caxias do Sul", "calendário PARTIDAS", "Alta", 0]],
-"Pietro Galli": [["Mineiro Sub-15", "Betim", "Casa", "08/08", "08:00", "Toca da Raposa 1", "calendário PARTIDAS — CONFIRMADO", "Alta", 0]],
+"Luiz Felipe": [["Gauchão Sub-15", "Progresso", "Casa", "08/08", "15:00", "CT do Juventude, Caxias do Sul", "calendário PARTIDAS · FGF quartas VOLTA · perdeu ida 0x1 — jogo de eliminação", "Alta", 0]],
+"Pietro Galli": [["Mineiro Sub-15", "Betim", "Casa", "08/08", "08:00", "Toca da Raposa I · Belo Horizonte", "calendário PARTIDAS diz 08/08 08:00 · ⚠ FMF (federação) diz 09/08 13:30 — CONFIRMAR data com Papito antes de produzir", "A confirmar", 0], ["Mineiro Sub-15", "Coimbra SAF", "Fora", "15/08", "13:00", "Flávio Pentagna Guimarães · Contagem", "FMF R14", "A confirmar", 0], ["Mineiro Sub-15", "América", "Casa", "29/08", "09:00", "Toca da Raposa I · Belo Horizonte", "FMF R15 · última da fase", "A confirmar", 0]],
 "Rafinha Leonel": [["Paulista Sub-20", "Botafogo", "Fora", "07/08", "15:00", "CT Botafogo Academy · Ribeirão Preto", "FPF R10", "A confirmar", 0], ["Paulista Sub-20", "Ibrachina FC", "Fora", "11/08", "15:00", "Ibrachina Arena · São Paulo", "FPF R11", "A confirmar", 0], ["Paulista Sub-20", "XV Piracicaba", "Casa", "14/08", "15:00", "Bruno José Daniel · Santo André", "FPF R12", "A confirmar", 0], ["Paulista Sub-20", "São Caetano", "Casa", "21/08", "15:00", "Bruno José Daniel · Santo André", "FPF R13", "A confirmar", 0], ["Paulista Sub-20", "Aguaí", "Fora", "04/09", "15:00", "Leonardo Guaranha · Aguaí", "FPF R14", "A confirmar", 0], ["Paulista Sub-20", "Velo Clube", "Casa", "12/09", "15:00", "Bruno José Daniel · Santo André", "FPF R15", "A confirmar", 0]],
 "Rosenthal": [["Paulista Sub-17", "Juventus SAF", "Fora", "08/08", "11:00", "Sede Social do Juventus · São Paulo", "FPF R14", "A confirmar", 0]],
 "João Toscano": [["Paulistão Sub-17", "São Bento", "Casa", "08/08", "11:00", "Est. José Liberatti", "calendário PARTIDAS · com Leonan", "Alta", 0], ["Brasileirão Sub-17", "Vasco da Gama Saf", "Casa", "11/08", "15:00", "José Liberatti · Osasco-SP", "CBF R11 · 1ª Fase", "A confirmar", 0], ["Brasileirão Sub-17", "Atlético Goianiense Saf", "Fora", "18/08", "15:00", "Valdir Cândido de Queiroz (Guapó) · Guapo-GO", "CBF R12 · 1ª Fase", "A confirmar", 0]],
