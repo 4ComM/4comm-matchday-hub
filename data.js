@@ -7,7 +7,7 @@
 // Formato jogos:   [competição, adversário, mando, data, hora, local, fonte, prob, gatilhoA]
 // ============================================================
 window.__DATA = {
-"gerado": "07/08/2026 · PARTIDAS + ogol + FPF-SP + CBF + FMF + FGF + FCF + FPR + FFDF + FPF-Portugal + FFF",
+"gerado": "07/08/2026 · elenco 61->59 (Jhonatan Almeida e Pedro Gomes fora) · fontes por atleta em fontes_atletas.json",
 "atletas": [
 ["Gabigol", "Pro T2A", "Santos", "Junior Pedroso", "Felipe Salles", "—", "emprestado pelo Cruzeiro", "Gabriel Barbosa", []],
 ["Pablo Maia", "Pro T2A", "São Paulo", "Felipe Guimarães", "Felipe Salles", "Adidas", "", "", []],
@@ -66,9 +66,7 @@ window.__DATA = {
 ["Cauã Rodrigues", "Base", "Santos", "Fran", "(definir)", "—", "compliance: só usar envelope 4ComM após assinatura com o clube · não confundir com o designer Cauã", "Cauã", ["Santos Sub-17"]],
 ["Frediani", "Base", "Palmeiras", "Cristiano", "(definir)", "—", "", "", []],
 ["Guilherme Giehl", "Base", "RB Bragantino", "Thiago Xavier", "(definir)", "—", "emprestado · recusou post promocional com números", "Giehl", []],
-["Jhonatan Almeida", "Base", "Internacional", "Luis Felipe", "(definir)", "—", "", "Jhonatan", []],
 ["Luiz Henrique", "Base", "Real Murcia", "Henrique", "(definir)", "—", "", "Luizinho", []],
-["Pedro Gomes", "Base", "Referência", "Henrique", "(definir)", "—", "", "Pedrinho", []],
 ["Francisco Guimarães", "Base", "Goiás", "Felipe Guimarães", "(definir)", "—", "", "Francisco", []]
 ],
 "gestores": ["Cristiano", "Fabio", "Felipe Guimarães", "Fran", "Henrique", "Ivanildo", "Junior Pedroso", "Luis Felipe", "Papito", "Roberto", "Thiago Xavier", "Outro / marketing"],
@@ -117,7 +115,7 @@ window.__DATA = {
 ["dom 16/08 18:30", "Felipe Amaral", "Série B · Athletic (C)", "Base", "Alta", "(definir)", "Na fila", ""],
 ["dom 16/08 18:30", "Patrick de Lucca", "Série B · Novorizontino (C)", "Base", "Alta", "(definir)", "Na fila", ""]
 ],
-"rodizio": ["Aguirra*", "Brenelli", "Cauã Rodrigues", "Diego Fidelis", "Diogo Oliveira", "Felipe Amaral", "Felipe Oliveira", "Fellipe Lima", "Gustavo Defante", "Gustavo Passos", "Jean Louis", "João Toscano", "Karlos Samuel", "Kauê Canela", "Leonan ✓A", "Luca Canela", "Luigi", "Luiz Felipe", "Luiz Gusttavo", "Pablo Maia", "Patrick de Lucca", "Pedro Tizon", "Pietro Galli", "Rafa Martinez", "Rafinha Leonel", "Rosenthal", "Ryan Ridek", "Thalisson", "Thiaguinho", "Arthur Henrique", "Tiago Barros", "— já receberam no ciclo:", "Arthur Diniz (1)", "Enrico (1)", "Kayk (1)", "Ryan N. (1)", "Lorenzo (2)", "Moisés (2)", "Peglow (3)", "Giovanni (4)", "Thayllon (4)", "Gabigol (6)"],
+"rodizio": ["Aguirra*", "Brenelli", "Cauã Rodrigues", "Diego Fidelis", "Diogo Oliveira", "Felipe Amaral", "Felipe Oliveira", "Fellipe Lima", "Gustavo Defante", "Gustavo Passos", "Jean Louis", "João Toscano", "Karlos Samuel", "Kauê Canela", "Leonan ✓A", "Luca Canela", "Luigi", "Luiz Felipe", "Luiz Gusttavo", "Pablo Maia", "Patrick de Lucca", "Pietro Galli", "Rafa Martinez", "Rafinha Leonel", "Rosenthal", "Ryan Ridek", "Thalisson", "Thiaguinho", "Arthur Henrique", "Tiago Barros", "— já receberam no ciclo:", "Arthur Diniz (1)", "Enrico (1)", "Kayk (1)", "Ryan N. (1)", "Lorenzo (2)", "Moisés (2)", "Peglow (3)", "Giovanni (4)", "Thayllon (4)", "Gabigol (6)"],
 "banco": [["Karlos Samuel", "10/06", "Hyzzi", "vs Corinthians (cortado)", "story"], ["Luiz Gusttavo", "11/06", "Cauã", "vs Palmeiras (cortado)", "story"], ["Diego Fidelis", "13/06", "—", "jogo 13/06 (cortado)", "story"], ["Giovanni", "24/07", "F. Salles", "não foi ao jogo — 'guardar pro próximo'", "vídeo"]],
 "jogos": {
 "Gabigol": [["Brasileirão", "Athletico", "Casa", "09/08", "18:30", "Vila Belmiro", "calendário PARTIDAS", "Alta", 0], ["Copa Sul-Americana", "Macará", "Casa", "13/08", "19:00", "Vila Belmiro", "calendário PARTIDAS — oitavas ida", "Alta", 1], ["Brasileirão", "Vasco", "Fora", "16/08", "—", "—", "ogol 06/08", "Alta", 0], ["Copa Sul-Americana", "Macará", "Fora", "20/08", "—", "—", "calendário PARTIDAS — oitavas volta", "Alta", 1], ["Brasileirão", "Mirassol", "Casa", "23/08", "18:30", "—", "ogol 06/08", "Alta", 0], ["Brasileirão", "Corinthians", "Fora", "28/08", "21:00", "—", "ogol 06/08", "Alta", 0], ["Brasileirão", "Internacional", "Fora", "05/09", "—", "—", "ogol 06/08", "Alta", 0], ["Brasileirão", "Cruzeiro", "Casa", "12/09", "21:00", "—", "ogol 06/08", "Alta", 0], ["Brasileirão", "Remo", "Fora", "19/09", "21:00", "—", "ogol 06/08", "Alta", 0], ["Brasileirão", "Flamengo", "Casa", "06/10", "21:00", "—", "ogol 06/08", "Alta", 0], ["Brasileirão", "Atlético Mineiro", "Fora", "10/10", "21:00", "—", "ogol 06/08", "Alta", 0], ["Brasileirão", "Fluminense", "Fora", "17/10", "21:00", "—", "ogol 06/08", "Alta", 0], ["Brasileirão", "Bahia", "Casa", "24/10", "21:00", "—", "ogol 06/08", "Alta", 0], ["Brasileirão", "Palmeiras", "Casa", "28/10", "—", "—", "ogol 06/08", "Alta", 0], ["Brasileirão", "Red Bull Bragantino", "Fora", "04/11", "—", "—", "ogol 06/08", "Alta", 0], ["Brasileirão", "Coritiba", "Fora", "18/11", "—", "—", "ogol 06/08", "Alta", 0], ["Brasileirão", "Grêmio", "Casa", "21/11", "21:00", "—", "ogol 06/08", "Alta", 0], ["Brasileirão", "Vitória", "Fora", "27/11", "21:00", "—", "ogol 06/08", "Alta", 0], ["Brasileirão", "Botafogo", "Casa", "02/12", "—", "—", "ogol 06/08", "Alta", 0]],
