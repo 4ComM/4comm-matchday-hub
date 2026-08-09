@@ -1,0 +1,106 @@
+{
+  "_doc": "CRITÉRIOS DE DADOS 4ComM — qual fonte manda em quê. Definido em 07/08/2026 com o Felipe. Serve para não refazer trabalho e para não publicar número de origem duvidosa.",
+
+  "hierarquia_por_tipo_de_dado": [
+    {
+      "dado": "Jogos, gols e assistências em competição oficial — PROFISSIONAL",
+      "fonte_1": "ogol",
+      "fonte_2": "Sofascore (quando precisar de dado em minutos após o jogo)",
+      "fonte_3": "Wyscout (histórico e estatística profunda)",
+      "nunca": "ScoutHub",
+      "confianca": "alta — cobre ~95% dos casos",
+      "observacao": "O ogol é a referência para número de jogos, gols e assistências do profissional. Resolve inclusive a assistência, que súmula oficial não registra."
+    },
+    {
+      "dado": "Jogos, minutagem, gols e cartões — BASE",
+      "fonte_1": "Súmula oficial da federação (estadual ou CBF)",
+      "fonte_2": "ogol (quando o atleta tem página com jogos)",
+      "fonte_3": "Registro do gestor",
+      "nunca": "publicar sem conferir a súmula quando ela existe",
+      "confianca": "alta onde a federação publica súmula; nenhuma nas competições sem súmula",
+      "observacao": "A súmula é a única fonte que diz se o atleta foi RELACIONADO e não entrou — informação que nenhuma outra fonte tem. Também dá o minuto exato do gol."
+    },
+    {
+      "dado": "Estatística profunda (xG, ações, duelos, dribles, passes, posição por jogo)",
+      "fonte_1": "Wyscout",
+      "fonte_2": "—",
+      "nunca": "estimar",
+      "confianca": "alta para quem tem exportação; inexistente para o resto",
+      "observacao": "Só existe para os 14 atletas com exportação Wyscout no computador. Não inventar para os demais."
+    },
+    {
+      "dado": "Assistências",
+      "fonte_1": "ogol",
+      "fonte_2": "Wyscout",
+      "fonte_3": "Registro do gestor (marcar como sem prova)",
+      "nunca": "súmula (FPF e CBF NÃO registram assistência)",
+      "confianca": "média",
+      "observacao": "Decisão pendente do Felipe: publicar assistência de base sem fonte oficial, ou divulgar só gols e minutagem."
+    },
+    {
+      "dado": "Dados pessoais (nome civil, nascimento, altura, peso, pé, posição, naturalidade)",
+      "fonte_1": "ogol",
+      "fonte_2": "Súmula da federação (nome civil e número de registro)",
+      "fonte_3": "Gestor / família",
+      "confianca": "alta para quem tem página no ogol",
+      "observacao": "O nome civil é o que destrava a busca na súmula — a federação não usa apelido."
+    },
+    {
+      "dado": "Jogos futuros / agenda",
+      "fonte_1": "Calendário PARTIDAS (Google) para o que o time já confirmou",
+      "fonte_2": "ogol (profissional) e federação (base) para o que ainda não foi cadastrado",
+      "fonte_3": "Confirmação do gestor",
+      "confianca": "alta até onde a competição publicou tabela",
+      "observacao": "Divergência de data entre calendário e federação: a federação vence, mas nunca sobrescrever em silêncio — marcar para confirmação."
+    },
+    {
+      "dado": "Situação contratual, carteira do gestor, marca e restrições de imagem",
+      "fonte_1": "Cadastro interno (aba OPERACIONAL / ELENCO do Radar)",
+      "fonte_2": "—",
+      "nunca": "site público",
+      "confianca": "depende do gestor manter atualizado",
+      "observacao": "Compliance (logo, opt-out, uso de IA) vive aqui e é inegociável na hora de produzir arte."
+    }
+  ],
+
+  "onde_buscar_por_competicao": {
+    "Brasileirão Série A e B": "ogol (profissional). CBF publica súmula, mas o ogol já consolida.",
+    "Copa do Brasil": "ogol",
+    "Copa Sul-Americana / Libertadores": "ogol",
+    "Estaduais profissionais": "ogol",
+    "Ligas do exterior (LaLiga, MLS, Russo, Qatar, Kosovo, USL, Primera Federación)": "ogol",
+    "Brasileirão Sub-17 e Sub-20": "API da CBF (www.cbf.com.br/api/cbf/jogos/{ref_jogo}) — JSON com escalação, substituição, gols e cartões",
+    "Copa do Brasil de base": "API da CBF (mesma rota)",
+    "Paulistão Sub-11 a Sub-20 e Copinha": "API da FPF (ListarTabela.ashx) + PDF da súmula",
+    "Mineiro de base": "FMF — fmf.com.br/Competicoes/ProxJogos.aspx?d={cat}",
+    "Gauchão de base": "FGF — fgf.com.br/competicoes/amador/{id}",
+    "Catarinense Sub-20": "FCF — egol.fcf.com.br/sisgol/DERW700B.asp",
+    "Paranaense de base e Copa Paraná": "FPR — federacaopr.com.br/campeonato/base/2026/{id}",
+    "Candangão Sub-20": "FFDF — ffdf.com.br/pt/competicoes/jogos_ajax_ver3.php",
+    "Base internacional (Portugal, França)": "resultados.fpf.pt e epreuves.fff.fr",
+    "Amistosos, torneios e copas não federadas (BH Cup, Copa RM, Alcans)": "NÃO EXISTE fonte pública — registro do gestor é a única, e entra marcado como sem prova"
+  },
+
+  "classificacao_de_cobertura": {
+    "COMPLETA": "Tem fonte oficial cobrindo praticamente todos os jogos da temporada. Pode publicar número com segurança.",
+    "PARCIAL": "Tem fonte oficial em parte das competições. Conferir a competição antes de publicar.",
+    "SÓ INTERNA": "O desempenho vem apenas do registro do gestor. Não publicar número sem conferir antes.",
+    "SEM DADOS": "Nenhum jogo registrado em 2026 por nenhuma fonte."
+  },
+
+  "regras_de_operacao": [
+    "Antes de buscar dado na internet, consultar o índice de arquivos: pode já existir e ser mais rico (a planilha do Antony tem 385 jogos com xG; o ogol dá menos).",
+    "Nunca casar atleta por nome sozinho: usa homônimo (o 'Fabinho' da busca era o ex-Liverpool; o 'Moisés' era o Caicedo do Chelsea). Sempre pelo ID do ogol ou pelo nome civil + clube + categoria.",
+    "Categoria tem que bater com a idade: Sub-N em 2026 exige nascimento a partir de 2026-N. Categoria errada faz o atleta sumir da varredura.",
+    "Atleta de base joga estadual E nacional. Marcar só uma federação faz perder metade dos jogos.",
+    "O Wyscout grava data em UTC: jogo noturno aparece no dia seguinte. Cruzar sempre com tolerância de 1 dia, senão o mesmo jogo entra duas vezes.",
+    "Divergência entre fontes nunca é resolvida em silêncio: mantém-se o registro e marca-se '⚠ confirmar'.",
+    "A planilha CENTRAL é gerada, não digitada. Corrigir na base e regenerar."
+  ],
+
+  "pendencias_de_decisao": [
+    "Publicar assistência de base sem fonte oficial? (nem FPF nem CBF registram)",
+    "Amistosos e torneios sem súmula entram nas estatísticas divulgadas ou ficam só no registro interno?",
+    "Jogo-treino entre categorias do próprio clube conta como jogo?"
+  ]
+}

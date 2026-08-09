@@ -9,7 +9,14 @@
       "clube_fonte": "nome do clube exatamente como a federação escreve",
       "categorias": "categorias em que ele pode ser relacionado nessa federação",
       "federacoes": "lista — um atleta de base joga estadual E nacional (ex.: Arthur Diniz no Paulistão e no Brasileirão Sub-17). Marcar só uma federação faz perder metade dos jogos.",
-      "clube_cbf": "nome do clube como a CBF escreve, quando difere da federação estadual"
+      "clube_cbf": "nome do clube como a CBF escreve, quando difere da federação estadual",
+      "nascimento": "data de nascimento (ogol)",
+      "altura_cm": "altura em cm (ogol)",
+      "peso_kg": "peso em kg (ogol)",
+      "pe": "pé preferencial (ogol)",
+      "posicao": "posição (ogol)",
+      "naturalidade": "cidade/país de nascimento (ogol)",
+      "situacao_ogol": "situação do jogador no ogol (em atividade, retirado)"
     },
     "atualizado": "07/08/2026 — IDs confirmados pelo Felipe",
     "regra_categoria": "Sub-N em 2026 exige nascimento >= 2026-N. Categoria errada faz o atleta sumir da varredura — conferir sempre contra a data de nascimento."
@@ -18,122 +25,262 @@
     "Gabigol": {
       "ogol_slug": "gabriel-barbosa",
       "ogol_id": "75171",
-      "nascimento": "1996-08-30"
+      "nascimento": "1996-08-30",
+      "nome_civil": "Gabriel Barbosa Almeida",
+      "altura_cm": 177,
+      "peso_kg": 82,
+      "pe": "Canhoto",
+      "situacao_ogol": "Em atividade",
+      "posicao": "Centroavante",
+      "naturalidade": "Brasil (São Bernardo do Campo (SP))"
     },
     "Ferreira": {
       "ogol_slug": "ferreira",
       "ogol_id": "518340",
-      "nascimento": "1997-12-31"
+      "nascimento": "1997-12-31",
+      "nome_civil": "Aldemir dos Santos Ferreira",
+      "altura_cm": 175,
+      "peso_kg": 66,
+      "situacao_ogol": "Em atividade",
+      "posicao": "Ponta Esquerda",
+      "naturalidade": "Brasil (Dourados (MS))"
     },
     "Pablo Maia": {
       "ogol_slug": "pablo-maia",
       "ogol_id": "682140",
-      "nascimento": "2002-01-10"
+      "nascimento": "2002-01-10",
+      "nome_civil": "Pablo Gonçalves Maia Fortunato",
+      "altura_cm": 178,
+      "peso_kg": 80,
+      "situacao_ogol": "Em atividade",
+      "posicao": "Volante",
+      "naturalidade": "Brasil (Brasópolis (MG))"
     },
     "Lucas Moura": {
       "ogol_slug": "lucas-moura",
       "ogol_id": "132213",
-      "nascimento": "1992-08-13"
+      "nascimento": "1992-08-13",
+      "nome_civil": "Lucas Rodrigues Moura da Silva",
+      "altura_cm": 174,
+      "peso_kg": 71,
+      "situacao_ogol": "Em atividade",
+      "posicao": "Ponta Direita",
+      "naturalidade": "Brasil (São Paulo)"
     },
     "Fabinho": {
       "ogol_slug": "fabinho",
       "ogol_id": "591172",
-      "nascimento": "1999-11-18"
+      "nascimento": "1999-11-18",
+      "nome_civil": "Fabio Augusto Luciano da Silva",
+      "altura_cm": 180,
+      "peso_kg": 75,
+      "pe": "Canhoto",
+      "situacao_ogol": "Em atividade",
+      "posicao": "Ponta Direita",
+      "naturalidade": "Brasil (São José dos Campos (SP))"
     },
     "Felipe Amaral": {
       "ogol_slug": "felipe-amaral",
       "ogol_id": "716499",
-      "nascimento": "2003-07-08"
+      "nascimento": "2003-07-08",
+      "nome_civil": "Felipe Amaral Casarin Damasceno",
+      "altura_cm": 174,
+      "peso_kg": 72,
+      "situacao_ogol": "Em atividade",
+      "posicao": "Volante",
+      "naturalidade": "Brasil (Campinas)"
     },
     "Patrick de Lucca": {
       "ogol_slug": "patrick-de-lucca",
       "ogol_id": "648805",
-      "nascimento": "2000-03-02"
+      "nascimento": "2000-03-02",
+      "nome_civil": "Patrick de Lucca Chaves de Oliveira",
+      "altura_cm": 180,
+      "peso_kg": 75,
+      "situacao_ogol": "Em atividade",
+      "posicao": "Volante",
+      "naturalidade": "Brasil (São Paulo (SP))"
     },
     "Thayllon": {
       "ogol_slug": "thayllon",
       "ogol_id": "900725",
-      "nascimento": "2006-08-18"
+      "nascimento": "2006-08-18",
+      "nome_civil": "Thayllon Roberth dos Santos Rebelo",
+      "altura_cm": 168,
+      "peso_kg": 64,
+      "pe": "Canhoto",
+      "situacao_ogol": "Em atividade",
+      "posicao": "Ponta Direita",
+      "naturalidade": "Brasil (Porto Alegre)"
     },
     "Thalisson": {
       "ogol_slug": "thalisson",
       "ogol_id": "716116",
-      "nascimento": "2002-01-20"
+      "nascimento": "2002-01-20",
+      "nome_civil": "Thalisson Gabriel Pereira Moreira",
+      "altura_cm": 190,
+      "peso_kg": 83,
+      "situacao_ogol": "Em atividade",
+      "posicao": "Zagueiro",
+      "naturalidade": "Brasil (Bauru (SP))"
     },
     "Kauê Canela": {
       "ogol_slug": "kaue-canela",
       "ogol_id": "839433",
-      "nascimento": "2004-02-20"
+      "nascimento": "2004-02-20",
+      "nome_civil": "Kauê Canela Arroula",
+      "altura_cm": 180,
+      "peso_kg": 81,
+      "situacao_ogol": "Em atividade",
+      "posicao": "Centroavante",
+      "naturalidade": "Brasil (Orlândia (SP))"
     },
     "Kayk Alboes": {
       "ogol_slug": "kayk-alboes",
       "ogol_id": "1175922",
-      "nascimento": "2007-04-11"
+      "nascimento": "2007-04-11",
+      "nome_civil": "Kayk Alboes da Silva",
+      "situacao_ogol": "Em atividade",
+      "posicao": "Ponta Esquerda"
     },
     "Dija": {
       "ogol_slug": "dija",
       "ogol_id": "943270",
-      "nascimento": "2003-04-14"
+      "nascimento": "2003-04-14",
+      "nome_civil": "Diego Kauan Silva Santos",
+      "situacao_ogol": "Em atividade",
+      "posicao": "Lateral Direito",
+      "naturalidade": "Brasil (Itabuna (BA))"
     },
     "Antony": {
       "ogol_slug": "antony",
       "ogol_id": "619622",
-      "nascimento": "2000-02-24"
+      "nascimento": "2000-02-24",
+      "nome_civil": "Antony Matheus dos Santos",
+      "altura_cm": 172,
+      "peso_kg": 66,
+      "pe": "Canhoto",
+      "situacao_ogol": "Em atividade",
+      "posicao": "Ponta Direita",
+      "naturalidade": "Brasil (São Paulo (SP))"
     },
     "Palmberg": {
       "ogol_slug": "palmberg",
       "ogol_id": "713983",
-      "nascimento": "2003-02-05"
+      "nascimento": "2003-02-05",
+      "nome_civil": "João Pedro Gomes Palmberg",
+      "altura_cm": 177,
+      "peso_kg": 60,
+      "situacao_ogol": "Em atividade",
+      "posicao": "Meia Ofensivo",
+      "naturalidade": "Brasil (São Paulo (SP))"
     },
     "Moisés": {
       "ogol_slug": "moises",
       "ogol_id": "288655",
-      "nascimento": "1995-03-11"
+      "nascimento": "1995-03-11",
+      "nome_civil": "Moisés Roberto Barbosa",
+      "altura_cm": 184,
+      "peso_kg": 91,
+      "pe": "Canhoto",
+      "situacao_ogol": "Em atividade",
+      "posicao": "Lateral Esquerdo",
+      "naturalidade": "Brasil (São Paulo (SP))"
     },
     "Peglow": {
       "ogol_slug": "peglow",
       "ogol_id": "609283",
-      "nascimento": "2002-01-07"
+      "nascimento": "2002-01-07",
+      "nome_civil": "João Gabriel Martins Peglow",
+      "altura_cm": 172,
+      "peso_kg": 70,
+      "situacao_ogol": "Em atividade",
+      "posicao": "Ponta Esquerda",
+      "naturalidade": "Brasil (Porto Alegre)"
     },
     "Giovanni": {
       "ogol_slug": "giovanni",
       "ogol_id": "570121",
-      "nascimento": "2002-01-31"
+      "nascimento": "2002-01-31",
+      "nome_civil": "Giovanni Manson Ribeiro",
+      "altura_cm": 176,
+      "peso_kg": 66,
+      "situacao_ogol": "Em atividade",
+      "posicao": "Ponta Esquerda",
+      "naturalidade": "Brasil (Bauru (SP))"
     },
     "Guilherme Torres": {
       "ogol_slug": "guilherme",
       "ogol_id": "100423",
-      "nascimento": "1991-04-05"
+      "nascimento": "1991-04-05",
+      "nome_civil": "Guilherme dos Santos Torres",
+      "altura_cm": 179,
+      "peso_kg": 77,
+      "situacao_ogol": "Em atividade",
+      "posicao": "Volante",
+      "naturalidade": "Brasil (Santo André)"
     },
     "Gabriel Alves": {
       "ogol_slug": "gabriel-alves",
       "ogol_id": "620849",
-      "nascimento": "1999-02-10"
+      "nascimento": "1999-02-10",
+      "nome_civil": "Gabriel Alcides Alves",
+      "pe": "Canhoto",
+      "situacao_ogol": "Em atividade",
+      "posicao": "Lateral Esquerdo",
+      "naturalidade": "Brasil (São Paulo (SP))"
     },
     "Nathan Mendes": {
       "ogol_slug": "nathan-mendes",
       "ogol_id": "713981",
-      "nascimento": "2002-08-19"
+      "nascimento": "2002-08-19",
+      "nome_civil": "Nathan Gabriel de Souza Mendes",
+      "altura_cm": 181,
+      "peso_kg": 79,
+      "situacao_ogol": "Em atividade",
+      "posicao": "Lateral Direito",
+      "naturalidade": "Brasil (Caçapava (SP))"
     },
     "Richard Candido": {
       "ogol_slug": "richard",
       "ogol_id": "505298",
-      "nascimento": "1994-02-18"
+      "nascimento": "1994-02-18",
+      "nome_civil": "Richard Candido Coelho",
+      "altura_cm": 191,
+      "peso_kg": 83,
+      "situacao_ogol": "Em atividade",
+      "posicao": "Volante",
+      "naturalidade": "Brasil (Campinas (SP))"
     },
     "Hwaskar": {
       "ogol_slug": "hwaskar",
       "ogol_id": "897049",
-      "nascimento": "2006-02-25"
+      "nascimento": "2006-02-25",
+      "nome_civil": "Hwaskar Fagundes Filho",
+      "altura_cm": 186,
+      "peso_kg": 76,
+      "situacao_ogol": "Em atividade",
+      "posicao": "2º Atacante"
     },
     "Felipe Oliveira": {
       "ogol_slug": "felipe-oliveira",
       "ogol_id": "765057",
-      "nascimento": "2006-09-23"
+      "nascimento": "2006-09-23",
+      "nome_civil": "Felipe Oliveira e Silva",
+      "pe": "Canhoto",
+      "situacao_ogol": "Em atividade",
+      "posicao": "Lateral Esquerdo",
+      "naturalidade": "Brasil (São Paulo (SP))"
     },
     "Ryan Nascimento": {
       "ogol_slug": "ryan-nascimento",
       "ogol_id": "1287289",
-      "nascimento": "2008-09-10"
+      "nascimento": "2008-09-10",
+      "nome_civil": "Ryan Nascimento dos Santos",
+      "altura_cm": 177,
+      "peso_kg": 73,
+      "situacao_ogol": "Em atividade",
+      "posicao": "Centroavante"
     }
   },
   "base": {
@@ -149,7 +296,9 @@
         "FPR"
       ],
       "nome_civil": "Luca Canela Arruola",
-      "nascimento": "2012-04-05"
+      "nascimento": "2012-04-05",
+      "situacao_ogol": "Em atividade",
+      "posicao": "Centroavante"
     },
     "Gustavo Passos": {
       "ogol_slug": "gustavo-santos",
@@ -164,7 +313,8 @@
       ],
       "clube_cbf": "Athletico Paranaense",
       "nome_civil": "Gustavo Passos Nery Santos",
-      "nascimento": "2012-03-09"
+      "nascimento": "2012-03-09",
+      "situacao_ogol": "Em atividade"
     },
     "Pietro Galli": {
       "ogol_slug": "pietro-galli",
@@ -177,7 +327,8 @@
         "FMF"
       ],
       "nome_civil": "Pietro de Figueiredo Galli",
-      "nascimento": "2011-08-30"
+      "nascimento": "2011-08-30",
+      "situacao_ogol": "Em atividade"
     },
     "Karlos Samuel": {
       "ogol_slug": "karlos-samuel",
@@ -193,7 +344,9 @@
       ],
       "clube_cbf": "Avaí",
       "nome_civil": "Karlos Samuel Bezerra Silva",
-      "nascimento": "2006-08-04"
+      "nascimento": "2006-08-04",
+      "situacao_ogol": "Em atividade",
+      "naturalidade": "Brasil (Americana (SP))"
     },
     "Thiaguinho": {
       "ogol_slug": "thiaguinho",
@@ -207,7 +360,10 @@
         "FFDF"
       ],
       "nome_civil": "Thiago de Sousa Pereira",
-      "nascimento": "2006-01-19"
+      "nascimento": "2006-01-19",
+      "pe": "Canhoto",
+      "situacao_ogol": "Em atividade",
+      "posicao": "Meia Ofensivo"
     },
     "Luiz Felipe": {
       "ogol_slug": "luiz-felipe",
@@ -220,7 +376,8 @@
         "FGF"
       ],
       "nome_civil": "Luiz Felipe Alves da Silva",
-      "nascimento": "2011-05-08"
+      "nascimento": "2011-05-08",
+      "situacao_ogol": "Em atividade"
     },
     "Diogo Oliveira": {
       "ogol_slug": "diogo-oliveira",
@@ -233,7 +390,11 @@
         "FPF-Portugal"
       ],
       "nome_civil": "Diogo Oliveira",
-      "nascimento": "2011-07-22"
+      "nascimento": "2011-07-22",
+      "altura_cm": 162,
+      "peso_kg": 53,
+      "situacao_ogol": "Em atividade",
+      "posicao": "Ponta Esquerda"
     },
     "Jean Louis": {
       "ogol_slug": "jean-louis-oliveira",
@@ -246,7 +407,9 @@
         "FFF"
       ],
       "nome_civil": "Jean-Louis Oliveira",
-      "nascimento": "2008-03-15"
+      "nascimento": "2008-03-15",
+      "situacao_ogol": "Em atividade",
+      "posicao": "Meia Central"
     },
     "Cauã Rodrigues": {
       "ogol_slug": "caua",
@@ -262,7 +425,8 @@
       "clube_cbf": "Santos FC",
       "nome_civil": "Cauã Barbosa Rodrigues",
       "nascimento": "2010-05-06",
-      "obs_cobertura": "varridos 11 jogos do Santos Sub-17 e não consta na relação. Nasceu em 2010 (16 anos) — confirmar com o gestor se joga Sub-16, categoria que a FPF não publica."
+      "obs_cobertura": "varridos 11 jogos do Santos Sub-17 e não consta na relação. Nasceu em 2010 (16 anos) — confirmar com o gestor se joga Sub-16, categoria que a FPF não publica.",
+      "situacao_ogol": "Em atividade"
     },
     "Leonan": {
       "ogol_slug": "leonan",
@@ -278,7 +442,8 @@
       "clube_cbf": "São Paulo",
       "nome_civil": "Leonan Victor Fontes da Silva",
       "nascimento": "2009-03-12",
-      "obs_cobertura": "varridos 11 jogos do São Paulo Sub-17 (abr-jul/2026) e NÃO foi relacionado em nenhum — compatível com o retorno de lesão de 08/08. Não é falha de extração."
+      "obs_cobertura": "varridos 11 jogos do São Paulo Sub-17 (abr-jul/2026) e NÃO foi relacionado em nenhum — compatível com o retorno de lesão de 08/08. Não é falha de extração.",
+      "situacao_ogol": "Em atividade"
     },
     "Guilherme Giehl": {
       "ogol_slug": "guilherme-giehl",
@@ -295,7 +460,9 @@
       "clube_cbf": "Red Bull Bragantino",
       "nome_civil": "Guilherme Souza Giehl",
       "nascimento": "2008-03-08",
-      "obs_categoria": "corrigido em 07/08: nasceu em 2008, não é elegível a Sub-17 em 2026"
+      "obs_categoria": "corrigido em 07/08: nasceu em 2008, não é elegível a Sub-17 em 2026",
+      "situacao_ogol": "Em atividade",
+      "naturalidade": "Brasil (Jundiaí (SP))"
     },
     "Frediani": {
       "ogol_slug": "raphael",
@@ -310,7 +477,8 @@
         "FPF"
       ],
       "nascimento": "2008-03-14",
-      "obs_categoria": "corrigido em 07/08: nasceu em 2008, não é elegível a Sub-17 em 2026"
+      "obs_categoria": "corrigido em 07/08: nasceu em 2008, não é elegível a Sub-17 em 2026",
+      "situacao_ogol": "Em atividade"
     },
     "Rafinha Leonel": {
       "ogol_slug": "joao-rafael",
@@ -324,13 +492,17 @@
       "federacoes": [
         "FPF"
       ],
-      "nascimento": "2006-06-09"
+      "nascimento": "2006-06-09",
+      "situacao_ogol": "Em atividade",
+      "posicao": "Meia Ofensivo",
+      "naturalidade": "Brasil (Guarulhos (SP))"
     },
     "Francisco Guimarães": {
       "ogol_slug": "fran",
       "ogol_id": "1188366",
       "nome_civil": "Francisco Ayello Guimarães",
-      "nascimento": "2007-12-12"
+      "nascimento": "2007-12-12",
+      "situacao_ogol": "Em atividade"
     },
     "Lorenzo Dracena": {
       "nome_civil": "Lorenzo Rebeschini de Souza",
