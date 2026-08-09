@@ -4,79 +4,530 @@
     "regra_de_fonte": "Profissional -> ogol (id abaixo) ou Sofascore, disponível segundos após o jogo. Base -> súmula oficial da federação (estadual/nacional), usando o nome civil de registro. ScoutHub nunca é fonte primária.",
     "campos": {
       "ogol_id": "id numérico da página do jogador no ogol; a URL é https://www.ogol.com.br/jogador/{ogol_slug}/{ogol_id}/jogos?epoca_id=155 (155 = temporada 2026)",
-      "nome_civil": "nome de registro como aparece na súmula da federação — a súmula NÃO usa apelido, e trunca nomes longos",
+      "nome_civil": "nome de registro como aparece na súmula da federação — a súmula NÃO usa apelido, e trunca nomes longos — extraído automaticamente da página do ogol quando há ogol_id",
       "federacao": "sigla da federação que publica a súmula dos jogos dele",
       "clube_fonte": "nome do clube exatamente como a federação escreve",
-      "categorias": "categorias em que ele pode ser relacionado nessa federação"
+      "categorias": "categorias em que ele pode ser relacionado nessa federação",
+      "federacoes": "lista — um atleta de base joga estadual E nacional (ex.: Arthur Diniz no Paulistão e no Brasileirão Sub-17). Marcar só uma federação faz perder metade dos jogos.",
+      "clube_cbf": "nome do clube como a CBF escreve, quando difere da federação estadual"
     },
-    "atualizado": "07/08/2026 — IDs confirmados pelo Felipe"
+    "atualizado": "07/08/2026 — IDs confirmados pelo Felipe",
+    "regra_categoria": "Sub-N em 2026 exige nascimento >= 2026-N. Categoria errada faz o atleta sumir da varredura — conferir sempre contra a data de nascimento."
   },
-
   "profissional": {
-    "Gabigol":           {"ogol_slug": "gabriel-barbosa", "ogol_id": "75171"},
-    "Ferreira":          {"ogol_slug": "ferreira", "ogol_id": "518340"},
-    "Pablo Maia":        {"ogol_slug": "pablo-maia", "ogol_id": "682140"},
-    "Lucas Moura":       {"ogol_slug": "lucas-moura", "ogol_id": "132213"},
-    "Fabinho":           {"ogol_slug": "fabinho", "ogol_id": "591172"},
-    "Felipe Amaral":     {"ogol_slug": "felipe-amaral", "ogol_id": "716499"},
-    "Patrick de Lucca":  {"ogol_slug": "patrick-de-lucca", "ogol_id": "648805"},
-    "Thayllon":          {"ogol_slug": "thayllon", "ogol_id": "900725"},
-    "Thalisson":         {"ogol_slug": "thalisson", "ogol_id": "716116"},
-    "Kauê Canela":       {"ogol_slug": "kaue-canela", "ogol_id": "839433"},
-    "Kayk Alboes":       {"ogol_slug": "kayk-alboes", "ogol_id": "1175922"},
-    "Dija":              {"ogol_slug": "dija", "ogol_id": "943270"},
-    "Antony":            {"ogol_slug": "antony", "ogol_id": "619622"},
-    "Palmberg":          {"ogol_slug": "palmberg", "ogol_id": "713983"},
-    "Moisés":            {"ogol_slug": "moises", "ogol_id": "288655"},
-    "Peglow":            {"ogol_slug": "peglow", "ogol_id": "609283"},
-    "Giovanni":          {"ogol_slug": "giovanni", "ogol_id": "570121"},
-    "Guilherme Torres":  {"ogol_slug": "guilherme", "ogol_id": "100423"},
-    "Gabriel Alves":     {"ogol_slug": "gabriel-alves", "ogol_id": "620849"},
-    "Nathan Mendes":     {"ogol_slug": "nathan-mendes", "ogol_id": "713981"},
-    "Richard Candido":   {"ogol_slug": "richard", "ogol_id": "505298"},
-    "Hwaskar":           {"ogol_slug": "hwaskar", "ogol_id": "897049"},
-    "Felipe Oliveira":   {"ogol_slug": "felipe-oliveira", "ogol_id": "765057"},
-    "Ryan Nascimento":   {"ogol_slug": "ryan-nascimento", "ogol_id": "1287289"}
+    "Gabigol": {
+      "ogol_slug": "gabriel-barbosa",
+      "ogol_id": "75171",
+      "nascimento": "1996-08-30"
+    },
+    "Ferreira": {
+      "ogol_slug": "ferreira",
+      "ogol_id": "518340",
+      "nascimento": "1997-12-31"
+    },
+    "Pablo Maia": {
+      "ogol_slug": "pablo-maia",
+      "ogol_id": "682140",
+      "nascimento": "2002-01-10"
+    },
+    "Lucas Moura": {
+      "ogol_slug": "lucas-moura",
+      "ogol_id": "132213",
+      "nascimento": "1992-08-13"
+    },
+    "Fabinho": {
+      "ogol_slug": "fabinho",
+      "ogol_id": "591172",
+      "nascimento": "1999-11-18"
+    },
+    "Felipe Amaral": {
+      "ogol_slug": "felipe-amaral",
+      "ogol_id": "716499",
+      "nascimento": "2003-07-08"
+    },
+    "Patrick de Lucca": {
+      "ogol_slug": "patrick-de-lucca",
+      "ogol_id": "648805",
+      "nascimento": "2000-03-02"
+    },
+    "Thayllon": {
+      "ogol_slug": "thayllon",
+      "ogol_id": "900725",
+      "nascimento": "2006-08-18"
+    },
+    "Thalisson": {
+      "ogol_slug": "thalisson",
+      "ogol_id": "716116",
+      "nascimento": "2002-01-20"
+    },
+    "Kauê Canela": {
+      "ogol_slug": "kaue-canela",
+      "ogol_id": "839433",
+      "nascimento": "2004-02-20"
+    },
+    "Kayk Alboes": {
+      "ogol_slug": "kayk-alboes",
+      "ogol_id": "1175922",
+      "nascimento": "2007-04-11"
+    },
+    "Dija": {
+      "ogol_slug": "dija",
+      "ogol_id": "943270",
+      "nascimento": "2003-04-14"
+    },
+    "Antony": {
+      "ogol_slug": "antony",
+      "ogol_id": "619622",
+      "nascimento": "2000-02-24"
+    },
+    "Palmberg": {
+      "ogol_slug": "palmberg",
+      "ogol_id": "713983",
+      "nascimento": "2003-02-05"
+    },
+    "Moisés": {
+      "ogol_slug": "moises",
+      "ogol_id": "288655",
+      "nascimento": "1995-03-11"
+    },
+    "Peglow": {
+      "ogol_slug": "peglow",
+      "ogol_id": "609283",
+      "nascimento": "2002-01-07"
+    },
+    "Giovanni": {
+      "ogol_slug": "giovanni",
+      "ogol_id": "570121",
+      "nascimento": "2002-01-31"
+    },
+    "Guilherme Torres": {
+      "ogol_slug": "guilherme",
+      "ogol_id": "100423",
+      "nascimento": "1991-04-05"
+    },
+    "Gabriel Alves": {
+      "ogol_slug": "gabriel-alves",
+      "ogol_id": "620849",
+      "nascimento": "1999-02-10"
+    },
+    "Nathan Mendes": {
+      "ogol_slug": "nathan-mendes",
+      "ogol_id": "713981",
+      "nascimento": "2002-08-19"
+    },
+    "Richard Candido": {
+      "ogol_slug": "richard",
+      "ogol_id": "505298",
+      "nascimento": "1994-02-18"
+    },
+    "Hwaskar": {
+      "ogol_slug": "hwaskar",
+      "ogol_id": "897049",
+      "nascimento": "2006-02-25"
+    },
+    "Felipe Oliveira": {
+      "ogol_slug": "felipe-oliveira",
+      "ogol_id": "765057",
+      "nascimento": "2006-09-23"
+    },
+    "Ryan Nascimento": {
+      "ogol_slug": "ryan-nascimento",
+      "ogol_id": "1287289",
+      "nascimento": "2008-09-10"
+    }
   },
-
   "base": {
-    "Luca Canela":         {"ogol_slug": "luca-canela", "ogol_id": "2518940", "federacao": "FPR", "clube_fonte": "Athletico", "categorias": ["Sub-15", "Sub-16"]},
-    "Gustavo Passos":      {"ogol_slug": "gustavo-santos", "ogol_id": "3517137", "federacao": "CBF", "clube_fonte": "Athletico Paranaense", "categorias": ["Sub-17"]},
-    "Pietro Galli":        {"ogol_slug": "pietro-galli", "ogol_id": "3557337", "federacao": "FMF", "clube_fonte": "Cruzeiro - SAF", "categorias": ["Sub-15"]},
-    "Karlos Samuel":       {"ogol_slug": "karlos-samuel", "ogol_id": "809858", "federacao": "FCF", "clube_fonte": "Avaí", "categorias": ["Sub-20"]},
-    "Thiaguinho":          {"ogol_slug": "thiaguinho", "ogol_id": "974982", "federacao": "FFDF", "clube_fonte": "Brasiliense", "categorias": ["Sub-20"]},
-    "Luiz Felipe":         {"ogol_slug": "luiz-felipe", "ogol_id": "3563047", "federacao": "FGF", "clube_fonte": "Juventude", "categorias": ["Sub-15"]},
-    "Diogo Oliveira":      {"ogol_slug": "diogo-oliveira", "ogol_id": "899854", "federacao": "FPF-Portugal", "clube_fonte": "Vitória SC", "categorias": ["Sub-15"]},
-    "Jean Louis":          {"ogol_slug": "jean-louis-oliveira", "ogol_id": "3553679", "federacao": "FFF", "clube_fonte": "Paris FC", "categorias": ["Sub-19"]},
-    "Cauã Rodrigues":      {"ogol_slug": "caua", "ogol_id": "2770204", "federacao": "FPF", "clube_fonte": "Santos", "categorias": ["Sub-17"]},
-    "Leonan":              {"ogol_slug": "leonan", "ogol_id": "1139980", "federacao": "FPF", "clube_fonte": "São Paulo", "categorias": ["Sub-17"]},
-    "Guilherme Giehl":     {"ogol_slug": "guilherme-giehl", "ogol_id": "1023436", "federacao": "FPF", "clube_fonte": "Red Bull Bragantino", "categorias": ["Sub-17"]},
-    "Frediani":            {"ogol_slug": "raphael", "ogol_id": "2533423", "nome_civil": "Raphael", "federacao": "FPF", "clube_fonte": "Palmeiras", "categorias": ["Sub-17"]},
-    "Rafinha Leonel":      {"ogol_slug": "joao-rafael", "ogol_id": "974294", "nome_civil": "João Rafael", "federacao": "FPF", "clube_fonte": "Santo André", "categorias": ["Sub-20"]},
-    "Francisco Guimarães": {"ogol_slug": "fran", "ogol_id": "1188366"},
-
-    "Lorenzo Dracena":     {"nome_civil": "Lorenzo Rebeschini de Souza", "federacao": "FPF", "clube_fonte": "Palmeiras", "categorias": ["Sub-15"]},
-    "Luigi Dracena":       {"nome_civil": "Luigi Rebeschini de Souza", "federacao": "FPF", "clube_fonte": "Palmeiras", "categorias": ["Sub-13"]},
-    "Arthur Henrique":     {"nome_civil": "Arthur Henrique", "federacao": "FPF", "clube_fonte": "São Paulo", "categorias": ["Sub-15"]},
-    "Diego Fidelis":       {"nome_civil": "Diego Fidelis Mesquita", "federacao": "FPF", "clube_fonte": "São Paulo", "categorias": ["Sub-15"]},
-    "João Toscano":        {"nome_civil": "Toscano", "federacao": "FPF", "clube_fonte": "São Paulo", "categorias": ["Sub-17"]},
-    "Rafa Martinez":       {"nome_civil": "Martinez", "federacao": "FPF", "clube_fonte": "São Paulo", "categorias": ["Sub-14"]},
-    "Ryan Ridek":          {"nome_civil": "Ridek", "federacao": "FPF", "clube_fonte": "São Paulo", "categorias": ["Sub-14"]},
-    "Pedro Tizon":         {"nome_civil": "Tizon", "federacao": "FPF", "clube_fonte": "São Paulo", "categorias": ["Sub-13"]},
-    "Tiago Barros":        {"nome_civil": "Tiago de Barros Andrade", "federacao": "FPF", "clube_fonte": "Santos", "categorias": ["Sub-17"]},
-    "Luiz Gusttavo":       {"nome_civil": "Luiz Gu", "federacao": "FPF", "clube_fonte": "Santos", "categorias": ["Sub-17", "Sub-20"]},
-    "Enrico":              {"nome_civil": "Enrico", "federacao": "FPF", "clube_fonte": "Palmeiras", "categorias": ["Sub-14"]},
-    "Felipe Brenelli":     {"nome_civil": "Felipe Godoy Brenelli", "federacao": "FPF", "clube_fonte": "Guarani", "categorias": ["Sub-15"]},
-    "Fellipe Lima":        {"nome_civil": "Felipe Lima Santos", "federacao": "FPF", "clube_fonte": "Água Santa", "categorias": ["Sub-15"]},
-    "Matheus Bittencourt": {"nome_civil": "Matheus Luizari Fontoura Bitencourt", "federacao": "FPF", "clube_fonte": "Referência FC", "categorias": ["Sub-15"]},
-    "Gustavo Defante":     {"nome_civil": "Gustavo Defante Oliveira", "federacao": "FPF", "clube_fonte": "Referência FC", "categorias": ["Sub-17"]},
-    "Arthur Diniz":        {"nome_civil": "Arthur Ferreira Diniz", "federacao": "CBF", "clube_fonte": "Red Bull Bragantino", "categorias": ["Sub-17"]},
-    "Aguirra":             {"nome_civil": "Aguirra", "federacao": "FPF", "clube_fonte": "Corinthians", "categorias": ["Sub-17"]},
-    "Rosenthal":           {"nome_civil": "Rosenthal", "federacao": "FPF", "clube_fonte": "Ibrachina FC", "categorias": ["Sub-17"]},
-
-    "Arthur Gustavo":      {"pendente": "sem fonte identificada — o Felipe confirmou em 07/08 que segue sem"}
+    "Luca Canela": {
+      "ogol_slug": "luca-canela",
+      "ogol_id": "2518940",
+      "clube_fonte": "Athletico",
+      "categorias": [
+        "Sub-15",
+        "Sub-16"
+      ],
+      "federacoes": [
+        "FPR"
+      ],
+      "nome_civil": "Luca Canela Arruola",
+      "nascimento": "2012-04-05"
+    },
+    "Gustavo Passos": {
+      "ogol_slug": "gustavo-santos",
+      "ogol_id": "3517137",
+      "clube_fonte": "Athletico Paranaense",
+      "categorias": [
+        "Sub-17"
+      ],
+      "federacoes": [
+        "FPR",
+        "CBF"
+      ],
+      "clube_cbf": "Athletico Paranaense",
+      "nome_civil": "Gustavo Passos Nery Santos",
+      "nascimento": "2012-03-09"
+    },
+    "Pietro Galli": {
+      "ogol_slug": "pietro-galli",
+      "ogol_id": "3557337",
+      "clube_fonte": "Cruzeiro - SAF",
+      "categorias": [
+        "Sub-15"
+      ],
+      "federacoes": [
+        "FMF"
+      ],
+      "nome_civil": "Pietro de Figueiredo Galli",
+      "nascimento": "2011-08-30"
+    },
+    "Karlos Samuel": {
+      "ogol_slug": "karlos-samuel",
+      "ogol_id": "809858",
+      "clube_fonte": "Avaí",
+      "categorias": [
+        "Sub-20",
+        "Copinha"
+      ],
+      "federacoes": [
+        "FCF",
+        "CBF"
+      ],
+      "clube_cbf": "Avaí",
+      "nome_civil": "Karlos Samuel Bezerra Silva",
+      "nascimento": "2006-08-04"
+    },
+    "Thiaguinho": {
+      "ogol_slug": "thiaguinho",
+      "ogol_id": "974982",
+      "clube_fonte": "Brasiliense",
+      "categorias": [
+        "Sub-20",
+        "Copinha"
+      ],
+      "federacoes": [
+        "FFDF"
+      ],
+      "nome_civil": "Thiago de Sousa Pereira",
+      "nascimento": "2006-01-19"
+    },
+    "Luiz Felipe": {
+      "ogol_slug": "luiz-felipe",
+      "ogol_id": "3563047",
+      "clube_fonte": "Juventude",
+      "categorias": [
+        "Sub-15"
+      ],
+      "federacoes": [
+        "FGF"
+      ],
+      "nome_civil": "Luiz Felipe Alves da Silva",
+      "nascimento": "2011-05-08"
+    },
+    "Diogo Oliveira": {
+      "ogol_slug": "diogo-oliveira",
+      "ogol_id": "899854",
+      "clube_fonte": "Vitória SC",
+      "categorias": [
+        "Sub-15"
+      ],
+      "federacoes": [
+        "FPF-Portugal"
+      ],
+      "nome_civil": "Diogo Oliveira",
+      "nascimento": "2011-07-22"
+    },
+    "Jean Louis": {
+      "ogol_slug": "jean-louis-oliveira",
+      "ogol_id": "3553679",
+      "clube_fonte": "Paris FC",
+      "categorias": [
+        "Sub-19"
+      ],
+      "federacoes": [
+        "FFF"
+      ],
+      "nome_civil": "Jean-Louis Oliveira",
+      "nascimento": "2008-03-15"
+    },
+    "Cauã Rodrigues": {
+      "ogol_slug": "caua",
+      "ogol_id": "2770204",
+      "clube_fonte": "Santos",
+      "categorias": [
+        "Sub-17"
+      ],
+      "federacoes": [
+        "FPF",
+        "CBF"
+      ],
+      "clube_cbf": "Santos FC",
+      "nome_civil": "Cauã Barbosa Rodrigues",
+      "nascimento": "2010-05-06",
+      "obs_cobertura": "varridos 11 jogos do Santos Sub-17 e não consta na relação. Nasceu em 2010 (16 anos) — confirmar com o gestor se joga Sub-16, categoria que a FPF não publica."
+    },
+    "Leonan": {
+      "ogol_slug": "leonan",
+      "ogol_id": "1139980",
+      "clube_fonte": "São Paulo",
+      "categorias": [
+        "Sub-17"
+      ],
+      "federacoes": [
+        "FPF",
+        "CBF"
+      ],
+      "clube_cbf": "São Paulo",
+      "nome_civil": "Leonan Victor Fontes da Silva",
+      "nascimento": "2009-03-12",
+      "obs_cobertura": "varridos 11 jogos do São Paulo Sub-17 (abr-jul/2026) e NÃO foi relacionado em nenhum — compatível com o retorno de lesão de 08/08. Não é falha de extração."
+    },
+    "Guilherme Giehl": {
+      "ogol_slug": "guilherme-giehl",
+      "ogol_id": "1023436",
+      "clube_fonte": "Red Bull Bragantino",
+      "categorias": [
+        "Sub-20",
+        "Copinha"
+      ],
+      "federacoes": [
+        "FPF",
+        "CBF"
+      ],
+      "clube_cbf": "Red Bull Bragantino",
+      "nome_civil": "Guilherme Souza Giehl",
+      "nascimento": "2008-03-08",
+      "obs_categoria": "corrigido em 07/08: nasceu em 2008, não é elegível a Sub-17 em 2026"
+    },
+    "Frediani": {
+      "ogol_slug": "raphael",
+      "ogol_id": "2533423",
+      "nome_civil": "Raphael Frediani Evaristo Ramos",
+      "clube_fonte": "Palmeiras",
+      "categorias": [
+        "Sub-20",
+        "Copinha"
+      ],
+      "federacoes": [
+        "FPF"
+      ],
+      "nascimento": "2008-03-14",
+      "obs_categoria": "corrigido em 07/08: nasceu em 2008, não é elegível a Sub-17 em 2026"
+    },
+    "Rafinha Leonel": {
+      "ogol_slug": "joao-rafael",
+      "ogol_id": "974294",
+      "nome_civil": "João Rafael Ferreira Santos",
+      "clube_fonte": "Santo André",
+      "categorias": [
+        "Sub-20",
+        "Copinha"
+      ],
+      "federacoes": [
+        "FPF"
+      ],
+      "nascimento": "2006-06-09"
+    },
+    "Francisco Guimarães": {
+      "ogol_slug": "fran",
+      "ogol_id": "1188366",
+      "nome_civil": "Francisco Ayello Guimarães",
+      "nascimento": "2007-12-12"
+    },
+    "Lorenzo Dracena": {
+      "nome_civil": "Lorenzo Rebeschini de Souza",
+      "clube_fonte": "Palmeiras",
+      "categorias": [
+        "Sub-15"
+      ],
+      "federacoes": [
+        "FPF"
+      ]
+    },
+    "Luigi Dracena": {
+      "nome_civil": "Luigi Rebeschini de Souza",
+      "clube_fonte": "Palmeiras",
+      "categorias": [
+        "Sub-12",
+        "Sub-13"
+      ],
+      "federacoes": [
+        "FPF"
+      ],
+      "obs_categoria": "hub diz Sub-12; pode subir para Sub-13 — varrer as duas"
+    },
+    "Arthur Henrique": {
+      "nome_civil": "Arthur Henrique",
+      "clube_fonte": "São Paulo",
+      "categorias": [
+        "Sub-15"
+      ],
+      "federacoes": [
+        "FPF"
+      ]
+    },
+    "Diego Fidelis": {
+      "nome_civil": "Diego Fidelis Mesquita",
+      "clube_fonte": "São Paulo",
+      "categorias": [
+        "Sub-15"
+      ],
+      "federacoes": [
+        "FPF"
+      ]
+    },
+    "João Toscano": {
+      "nome_civil": "Toscano",
+      "clube_fonte": "São Paulo",
+      "categorias": [
+        "Sub-17"
+      ],
+      "federacoes": [
+        "FPF",
+        "CBF"
+      ],
+      "clube_cbf": "São Paulo"
+    },
+    "Rafa Martinez": {
+      "nome_civil": "Martinez",
+      "clube_fonte": "São Paulo",
+      "categorias": [
+        "Sub-14"
+      ],
+      "federacoes": [
+        "FPF"
+      ]
+    },
+    "Ryan Ridek": {
+      "nome_civil": "Ridek",
+      "clube_fonte": "São Paulo",
+      "categorias": [
+        "Sub-14"
+      ],
+      "federacoes": [
+        "FPF"
+      ]
+    },
+    "Pedro Tizon": {
+      "nome_civil": "Tizon",
+      "clube_fonte": "São Paulo",
+      "categorias": [
+        "Sub-13"
+      ],
+      "federacoes": [
+        "FPF"
+      ]
+    },
+    "Tiago Barros": {
+      "nome_civil": "Tiago de Barros Andrade",
+      "clube_fonte": "Santos",
+      "categorias": [
+        "Sub-17"
+      ],
+      "federacoes": [
+        "FPF",
+        "CBF"
+      ],
+      "clube_cbf": "Santos FC"
+    },
+    "Luiz Gusttavo": {
+      "nome_civil": "Luiz Gu",
+      "clube_fonte": "Santos",
+      "categorias": [
+        "Sub-17",
+        "Sub-20",
+        "Copinha"
+      ],
+      "federacoes": [
+        "FPF",
+        "CBF"
+      ],
+      "clube_cbf": "Santos FC"
+    },
+    "Enrico": {
+      "nome_civil": "Enrico",
+      "clube_fonte": "Palmeiras",
+      "categorias": [
+        "Sub-14"
+      ],
+      "federacoes": [
+        "FPF"
+      ]
+    },
+    "Felipe Brenelli": {
+      "nome_civil": "Felipe Godoy Brenelli",
+      "clube_fonte": "Guarani",
+      "categorias": [
+        "Sub-15"
+      ],
+      "federacoes": [
+        "FPF"
+      ]
+    },
+    "Fellipe Lima": {
+      "nome_civil": "Felipe Lima Santos",
+      "clube_fonte": "Água Santa",
+      "categorias": [
+        "Sub-15"
+      ],
+      "federacoes": [
+        "FPF"
+      ]
+    },
+    "Matheus Bittencourt": {
+      "nome_civil": "Matheus Luizari Fontoura Bitencourt",
+      "clube_fonte": "Referência FC",
+      "categorias": [
+        "Sub-15"
+      ],
+      "federacoes": [
+        "FPF"
+      ]
+    },
+    "Gustavo Defante": {
+      "nome_civil": "Gustavo Defante Oliveira",
+      "clube_fonte": "Referência FC",
+      "categorias": [
+        "Sub-17"
+      ],
+      "federacoes": [
+        "FPF"
+      ]
+    },
+    "Arthur Diniz": {
+      "nome_civil": "Arthur Ferreira Diniz",
+      "clube_fonte": "Red Bull Bragantino",
+      "categorias": [
+        "Sub-17"
+      ],
+      "federacoes": [
+        "FPF",
+        "CBF"
+      ],
+      "clube_cbf": "Red Bull Bragantino"
+    },
+    "Aguirra": {
+      "nome_civil": "Aguirra",
+      "clube_fonte": "Corinthians",
+      "categorias": [
+        "Sub-17"
+      ],
+      "federacoes": [
+        "FPF"
+      ]
+    },
+    "Rosenthal": {
+      "nome_civil": "Rosenthal",
+      "clube_fonte": "Ibrachina FC",
+      "categorias": [
+        "Sub-17"
+      ],
+      "federacoes": [
+        "FPF"
+      ]
+    },
+    "Arthur Gustavo": {
+      "pendente": "sem fonte identificada — o Felipe confirmou em 07/08 que segue sem"
+    }
   },
-
   "removidos": {
     "Jhonatan Almeida": "removido do elenco em 07/08/2026 (decisão do Felipe)",
     "Pedro Gomes": "contrato encerrado em 07/08/2026 (decisão do Felipe)",
