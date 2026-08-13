@@ -5,7 +5,7 @@ onde cada dado mora, o estado de hoje e o que já foi resolvido e **não deve se
 Histórico detalhado por sessão fica em `SESSAO_*.md`.
 
 **Dono do projeto:** Felipe Mazmanian (Head/Diretor de Comunicação) · contato@4comm.com.br
-**Última atualização:** 07/08/2026
+**Última atualização:** 13/08/2026
 
 ---
 
@@ -71,10 +71,12 @@ Histórico detalhado por sessão fica em `SESSAO_*.md`.
 
 ---
 
-## 3. Estado atual (07/08/2026)
+## 3. Estado atual (13/08/2026)
 
 - **Elenco:** 59 atletas (saíram Jhonatan Almeida e Pedro Gomes; Laruccia é auxiliar técnico, não entra em desempenho)
-- **CENTRAL_4ComM.xlsx:** 11 abas · **3.587 jogos desde 2015** · 381 jogos futuros · 717 arquivos indexados
+- **CENTRAL_4ComM.xlsx:** 11 abas · **3.606 jogos desde 2015** · 335 jogos futuros · 717 arquivos indexados
+- **Jogos_2026_4ComM.xlsx:** só a temporada — 845 disputados + 335 a jogar, filtro por gestor e uma aba por gestor
+- **Lacunas_WhatsApp_2026.xlsx:** 68 candidatos garimpados dos grupos, para conferência humana
 - **Cobertura:** 36 atletas COMPLETA · 12 PARCIAL · 4 SÓ INTERNA · 7 SEM DADOS
 - **Hub Matchday no ar:** https://4comm.github.io/4comm-matchday-hub/ (Pages via Actions)
 - **Rotina agendada:** `radar-ogol-matchday`, segunda 07:45 — varre ogol + FPF + CBF, atualiza `data.js` e publica
@@ -101,6 +103,8 @@ Estas armadilhas já custaram tempo. Estão resolvidas — não repita:
 | **Nome truncado na súmula** | O PDF corta em ~33 chars ("Matheus Luizari Fontoura Bitencou") | Casar pelos **dois primeiros nomes**, nunca pelo sobrenome |
 | **Buscar dado na internet antes de olhar em casa** | A planilha do Antony já tinha 385 jogos com xG; o ogol dá menos | **Consultar o índice de arquivos primeiro** |
 | **Dia da semana escrito à mão** | Vinha errado no dado (07/08 aparecia como quinta, era sexta) | O hub **calcula** o dia a partir da data |
+| **Data de hoje fixada no código** | Classifiquei uma semana inteira de jogos já disputados como "futuros" | `datetime.date.today()`, nunca literal |
+| **Primeiro nome como chave de busca** | "Gol Arthur Diniz" casou com Arthur Henrique; "do Luca e Gustavo" casou com Gustavo Defante | Nome comum **nunca** vira chave sozinho — usar sobrenome distintivo |
 
 ### Fatos apurados que não precisam de nova investigação
 - **Leonan e Cauã Rodrigues** não foram relacionados nos 11 jogos varridos de cada clube — procurei o nome civil nos 231 PDFs. Não é falha de extração. (Leonan estava voltando de lesão.)
@@ -108,6 +112,8 @@ Estas armadilhas já custaram tempo. Estão resolvidas — não repita:
 - **Thiago Ramos = Tiago Barros** (mesma pessoa, grafia alternativa).
 - **Portuguesa e Brasiliense** não publicam calendário futuro no ogol.
 - **Nem FPF nem CBF registram assistência** — só ogol e Wyscout têm.
+- **WhatsApp não é fonte de jogo, é pista.** Das 6.587 mensagens de 2025 no grupo de Artes, 58% são curtas ("ok", "valeu") e só 1 tinha data+hora+adversário juntos. Para histórico de jogos, a federação serve temporadas passadas (FPF 2025 tem 689 súmulas; 2024 tem 577) — é infinitamente melhor. O WhatsApp vale para **regra e preferência**: marcas, restrições, compliance, erros recorrentes.
+- **Boa parte do que a conversa traz é AUSÊNCIA** ("Defante não vai pro jogo", "Pietro fora do jogo amanhã") — é registro útil, não jogo faltando.
 
 ---
 
