@@ -12,6 +12,10 @@ Histórico detalhado por sessão fica em `SESSAO_*.md`.
 ## 1. Regras inegociáveis
 
 ### Fonte de dados
+0. **A conversa dos gestores no WhatsApp é a PRIMEIRA fonte de descoberta.** O gestor não preenche
+   formulário, mas fala. Medido em 2026: 273 jogos-atleta citados nos grupos, **101 (37%) não existem em
+   nenhuma fonte oficial** — amistosos, torneios, copas não federadas, seleção. Súmula e site servem de
+   **conferência**, não de descoberta. E a conversa é a única fonte de **ausência** (cortado, lesionado).
 1. **O ScoutHub NUNCA é fonte primária.** Os gestores não mantêm o registro. Medido: de 113 jogos
    provados por súmula, 78 não existiam lá. Serve só para confirmar algo já conferido na fonte oficial.
 2. **Profissional → ogol** (id no cadastro). Cobre ~95% dos casos de jogos, gols e assistências.
@@ -79,6 +83,7 @@ Histórico detalhado por sessão fica em `SESSAO_*.md`.
 - **Lacunas_WhatsApp_2026.xlsx:** 68 candidatos garimpados dos grupos, para conferência humana
 - **Cobertura:** 36 atletas COMPLETA · 12 PARCIAL · 4 SÓ INTERNA · 7 SEM DADOS
 - **Hub Matchday no ar:** https://4comm.github.io/4comm-matchday-hub/ (Pages via Actions)
+- **Jogos_pela_Conversa_2026.xlsx:** 273 jogos-atleta citados nos grupos · 101 só na conversa
 - **Rotina agendada:** `radar-ogol-matchday`, segunda 07:45 — varre ogol + FPF + CBF, atualiza `data.js` e publica
 
 ### Riscos abertos
@@ -101,6 +106,7 @@ Estas armadilhas já custaram tempo. Estão resolvidas — não repita:
 | **Cruzar Wyscout por data exata** | Wyscout grava em **UTC**: jogo noturno cai no dia seguinte e entra duas vezes | Dedup com **tolerância de ±1 dia** |
 | **"Reserva" do ScoutHub = não jogou** | Errado: significa que **começou no banco e entrou**. Normalizar pela minutagem | |
 | **Nome truncado na súmula** | O PDF corta em ~33 chars ("Matheus Luizari Fontoura Bitencou") | Casar pelos **dois primeiros nomes**, nunca pelo sobrenome |
+| **Varrer só parte das competições da CBF** | Eu lia 2 (Brasileirão Sub-17 e Sub-20); existem 6 — faltavam as Copas do Brasil Sub-15/Sub-17 e a Liga de Desenvolvimento Sub-13, que ocupam fevereiro a maio | Listar em `competitions` na página do time |
 | **Buscar dado na internet antes de olhar em casa** | A planilha do Antony já tinha 385 jogos com xG; o ogol dá menos | **Consultar o índice de arquivos primeiro** |
 | **Dia da semana escrito à mão** | Vinha errado no dado (07/08 aparecia como quinta, era sexta) | O hub **calcula** o dia a partir da data |
 | **Data de hoje fixada no código** | Classifiquei uma semana inteira de jogos já disputados como "futuros" | `datetime.date.today()`, nunca literal |

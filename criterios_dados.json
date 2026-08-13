@@ -1,7 +1,15 @@
 {
-  "_doc": "CRITÉRIOS DE DADOS 4ComM — qual fonte manda em quê. Definido em 07/08/2026 com o Felipe. Serve para não refazer trabalho e para não publicar número de origem duvidosa.",
-
+  "_doc": "CRITÉRIOS DE DADOS 4ComM — qual fonte manda em quê. Definido em 07/08/2026 com o Felipe. Serve para não refazer trabalho e para não publicar número de origem duvidosa. | Atualizado em 13/08/2026: a conversa dos gestores passou a ser a primeira fonte de descoberta de jogo.",
   "hierarquia_por_tipo_de_dado": [
+    {
+      "dado": "DESCOBRIR que um jogo existiu (qualquer categoria)",
+      "fonte_1": "Conversa dos gestores no WhatsApp (grupos Artes e Gestores)",
+      "fonte_2": "Calendário PARTIDAS",
+      "fonte_3": "Federação / ogol (só acham o que é competição oficial)",
+      "nunca": "assumir que o que não está na súmula não aconteceu",
+      "confianca": "alta para saber QUE houve jogo; baixa para data exata e números",
+      "observacao": "Regra do Felipe (13/08): o gestor não preenche formulário, mas fala. A conversa é onde o jogo aparece primeiro — súmula e site servem de conferência. Medido em 2026: 273 jogos-atleta citados nos grupos, e 101 deles (37%) não existem em nenhuma fonte oficial. São amistosos, torneios, copas não federadas e jogos de seleção — ex.: Copa Ibrachina, Torneio de Montaigu, campeonato no CT do Red Bull. A conversa também é a única fonte de AUSÊNCIA (cortado, lesionado, preservado)."
+    },
     {
       "dado": "Jogos, gols e assistências em competição oficial — PROFISSIONAL",
       "fonte_1": "ogol",
@@ -62,7 +70,6 @@
       "observacao": "Compliance (logo, opt-out, uso de IA) vive aqui e é inegociável na hora de produzir arte."
     }
   ],
-
   "onde_buscar_por_competicao": {
     "Brasileirão Série A e B": "ogol (profissional). CBF publica súmula, mas o ogol já consolida.",
     "Copa do Brasil": "ogol",
@@ -80,15 +87,14 @@
     "Base internacional (Portugal, França)": "resultados.fpf.pt e epreuves.fff.fr",
     "Amistosos, torneios e copas não federadas (BH Cup, Copa RM, Alcans)": "NÃO EXISTE fonte pública — registro do gestor é a única, e entra marcado como sem prova"
   },
-
   "classificacao_de_cobertura": {
     "COMPLETA": "Tem fonte oficial cobrindo praticamente todos os jogos da temporada. Pode publicar número com segurança.",
     "PARCIAL": "Tem fonte oficial em parte das competições. Conferir a competição antes de publicar.",
     "SÓ INTERNA": "O desempenho vem apenas do registro do gestor. Não publicar número sem conferir antes.",
     "SEM DADOS": "Nenhum jogo registrado em 2026 por nenhuma fonte."
   },
-
   "regras_de_operacao": [
+    "A conversa dos gestores é fonte de DESCOBERTA, não de número: ela diz que o jogo existiu; a súmula/ogol diz quanto o atleta jogou e o que fez. Nunca publicar número vindo só de mensagem sem conferir.",
     "Antes de buscar dado na internet, consultar o índice de arquivos: pode já existir e ser mais rico (a planilha do Antony tem 385 jogos com xG; o ogol dá menos).",
     "Nunca casar atleta por nome sozinho: usa homônimo (o 'Fabinho' da busca era o ex-Liverpool; o 'Moisés' era o Caicedo do Chelsea). Sempre pelo ID do ogol ou pelo nome civil + clube + categoria.",
     "Categoria tem que bater com a idade: Sub-N em 2026 exige nascimento a partir de 2026-N. Categoria errada faz o atleta sumir da varredura.",
@@ -97,7 +103,6 @@
     "Divergência entre fontes nunca é resolvida em silêncio: mantém-se o registro e marca-se '⚠ confirmar'.",
     "A planilha CENTRAL é gerada, não digitada. Corrigir na base e regenerar."
   ],
-
   "pendencias_de_decisao": [
     "Publicar assistência de base sem fonte oficial? (nem FPF nem CBF registram)",
     "Amistosos e torneios sem súmula entram nas estatísticas divulgadas ou ficam só no registro interno?",

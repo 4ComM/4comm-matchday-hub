@@ -293,12 +293,14 @@
         "Sub-16"
       ],
       "federacoes": [
-        "FPR"
+        "FPR",
+        "CBF"
       ],
       "nome_civil": "Luca Canela Arruola",
       "nascimento": "2012-04-05",
       "situacao_ogol": "Em atividade",
-      "posicao": "Centroavante"
+      "posicao": "Centroavante",
+      "clube_cbf": "Athletico Paranaense"
     },
     "Gustavo Passos": {
       "ogol_slug": "gustavo-santos",
@@ -474,11 +476,13 @@
         "Copinha"
       ],
       "federacoes": [
-        "FPF"
+        "FPF",
+        "CBF"
       ],
       "nascimento": "2008-03-14",
       "obs_categoria": "corrigido em 07/08: nasceu em 2008, não é elegível a Sub-17 em 2026",
-      "situacao_ogol": "Em atividade"
+      "situacao_ogol": "Em atividade",
+      "clube_cbf": "Palmeiras"
     },
     "Rafinha Leonel": {
       "ogol_slug": "joao-rafael",
@@ -511,8 +515,10 @@
         "Sub-15"
       ],
       "federacoes": [
-        "FPF"
-      ]
+        "FPF",
+        "CBF"
+      ],
+      "clube_cbf": "Palmeiras"
     },
     "Luigi Dracena": {
       "nome_civil": "Luigi Rebeschini de Souza",
@@ -522,9 +528,11 @@
         "Sub-13"
       ],
       "federacoes": [
-        "FPF"
+        "FPF",
+        "CBF"
       ],
-      "obs_categoria": "hub diz Sub-12; pode subir para Sub-13 — varrer as duas"
+      "obs_categoria": "hub diz Sub-12; pode subir para Sub-13 — varrer as duas",
+      "clube_cbf": "Palmeiras"
     },
     "Arthur Henrique": {
       "nome_civil": "Arthur Henrique",
@@ -533,8 +541,10 @@
         "Sub-15"
       ],
       "federacoes": [
-        "FPF"
-      ]
+        "FPF",
+        "CBF"
+      ],
+      "clube_cbf": "São Paulo"
     },
     "Diego Fidelis": {
       "nome_civil": "Diego Fidelis Mesquita",
@@ -543,8 +553,10 @@
         "Sub-15"
       ],
       "federacoes": [
-        "FPF"
-      ]
+        "FPF",
+        "CBF"
+      ],
+      "clube_cbf": "São Paulo"
     },
     "João Toscano": {
       "nome_civil": "Toscano",
@@ -585,8 +597,10 @@
         "Sub-13"
       ],
       "federacoes": [
-        "FPF"
-      ]
+        "FPF",
+        "CBF"
+      ],
+      "clube_cbf": "São Paulo"
     },
     "Tiago Barros": {
       "nome_civil": "Tiago de Barros Andrade",
@@ -683,8 +697,10 @@
         "Sub-17"
       ],
       "federacoes": [
-        "FPF"
-      ]
+        "FPF",
+        "CBF"
+      ],
+      "clube_cbf": "Corinthians"
     },
     "Rosenthal": {
       "nome_civil": "Rosenthal",
