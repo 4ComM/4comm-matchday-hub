@@ -23,7 +23,7 @@ window.__DATA = {
 ["Kauê Canela", "Pro T5A", "Fortaleza", "Henrique", "(definir)", "—", "clube confirmado pelo Felipe (06/08): Fortaleza", "Kaue Canela", []],
 ["Hwaskar", "Pro T5B", "São Caetano", "Henrique", "—", "—", "OPT-OUT total — não fazer artes (23/07)", "Hwaskar Fagundes", []],
 ["Thalisson", "Pro T3B", "Ceará", "Felipe Guimarães", "(definir)", "—", "NÃO usa IA — 'abomina'", "", []],
-["Antony", "Pro", "Real Betis", "Papito", "(definir)", "—", "", "", []],
+["Antony", "Pro", "Real Betis", "Junior Pedroso", "(definir)", "—", "", "", []],
 ["Lucas Moura", "Pro", "São Paulo", "Junior Pedroso", "(definir)", "—", "", "", []],
 ["Ferreira", "Pro", "São Paulo", "Felipe Guimarães", "(definir)", "—", "", "Ferreirinha", []],
 ["Fabinho", "Pro", "Coritiba", "Junior Pedroso", "(definir)", "—", "", "", []],
