@@ -44,7 +44,7 @@ window.__DATA = {
 ["Felipe Brenelli", "Base Sub-15", "Guarani", "Thiago Xavier", "Cauã", "—", "", "Brenelli", ["Guarani Sub-15"]],
 ["Rafa Martinez", "Base Sub-14", "São Paulo", "Thiago Xavier", "Cauã", "Adidas", "", "Martinez", ["São Paulo Sub-14"]],
 ["Ryan Ridek", "Base Sub-14", "São Paulo", "Thiago Xavier", "Cauã", "Nike", "", "Ridek", ["São Paulo Sub-14"]],
-["Aguirra", "Base Sub-17", "Corinthians", "Thiago Xavier", "Cauã", "—", "NÃO ASSINOU — sem logo 4ComM · não consta no ELENCO do radar — confirmar situação", "", ["Corinthians Sub-17"]],
+["Aguirra", "Base Sub-17", "Corinthians", "Thiago Xavier", "Cauã", "—", "NÃO ASSINOU — sem logo 4ComM (regra de arte). Carteira completa no 4Data: consta no ELENCO do radar, na planilha e na agenda (equipes preenchidas 24/08)", "", ["Corinthians Sub-17"]],
 ["Leonan", "Base Sub-17", "São Paulo", "Thiago Xavier", "Cauã", "—", "", "", []],
 ["Matheus Bittencourt", "Base Sub-15", "Referência", "Fran", "Felipe Salles", "Adidas", "SEM IA NO ROSTO — pai aprova (critério: clean) · ⚠ ELENCO diz Sem marca — confirmar", "Bitencourt", ["Referência Sub-15"]],
 ["Tiago Barros", "Base Sub-17", "Santos", "Fran", "Hyzzi", "—", "", "Thiago Ramos (grafia alternativa)", ["Santos Sub-17"]],
