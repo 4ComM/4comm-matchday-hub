@@ -385,6 +385,7 @@
       "ogol_slug": "diogo-oliveira",
       "ogol_id": "899854",
       "clube_fonte": "Vitória SC",
+      "nome_civil_status": "NOME CIVIL CONFERIDO (23/08/2026): o ogol 899854 responde que \"o nome completo e Diogo Oliveira\". O nome de exibicao ser igual ao civil aqui e o nome real do atleta, nao truncamento - nao mexer.",
       "categorias": [
         "Sub-15"
       ],
@@ -535,7 +536,8 @@
       "clube_cbf": "Palmeiras"
     },
     "Arthur Henrique": {
-      "nome_civil": "Arthur Henrique",
+      "nome_civil": "Arthur Henrique Francisco de Oliveira",
+      "registro_fpf": "581011/24",
       "clube_fonte": "São Paulo",
       "categorias": [
         "Sub-15"
@@ -559,7 +561,8 @@
       "clube_cbf": "São Paulo"
     },
     "João Toscano": {
-      "nome_civil": "Toscano",
+      "nome_civil": "João Paulo Toscano dos Santos",
+      "registro_fpf": "541610/24",
       "clube_fonte": "São Paulo",
       "categorias": [
         "Sub-17"
@@ -571,7 +574,8 @@
       "clube_cbf": "São Paulo"
     },
     "Rafa Martinez": {
-      "nome_civil": "Martinez",
+      "nome_civil": "Rafael Thomé Nazar Martinez",
+      "registro_fpf": "593945/25",
       "clube_fonte": "São Paulo",
       "categorias": [
         "Sub-14"
@@ -581,7 +585,8 @@
       ]
     },
     "Ryan Ridek": {
-      "nome_civil": "Ridek",
+      "nome_civil": "Ryan Ridek Nishihara Candido",
+      "registro_fpf": "593947/25",
       "clube_fonte": "São Paulo",
       "categorias": [
         "Sub-14"
@@ -593,6 +598,7 @@
     "Pedro Tizon": {
       "nome_civil": "Tizon",
       "clube_fonte": "São Paulo",
+      "nome_civil_status": "NOME CIVIL PENDENTE (23/08/2026): o campo traz so \"Tizon\", que e nome de exibicao. Varridas as sumulas FPF 81127/416, /460 e /503 (Paulista Sub-13, relacao do Sao Paulo) e nenhum \"Tizon\" consta. Sem prova, NAO foi preenchido. Cobrar com o gestor Cristiano.",
       "categorias": [
         "Sub-13"
       ],
@@ -615,7 +621,8 @@
       "clube_cbf": "Santos FC"
     },
     "Luiz Gusttavo": {
-      "nome_civil": "Luiz Gu",
+      "nome_civil": "Luiz Gusttavo Ramos Marcelino Silva",
+      "registro_fpf": "665753/26",
       "clube_fonte": "Santos",
       "categorias": [
         "Sub-17",
@@ -629,7 +636,8 @@
       "clube_cbf": "Santos FC"
     },
     "Enrico": {
-      "nome_civil": "Enrico",
+      "nome_civil": "Enrico Fagundes de Almeida Matos",
+      "registro_fpf": "645977/26",
       "clube_fonte": "Palmeiras",
       "categorias": [
         "Sub-14"
@@ -691,7 +699,7 @@
       "clube_cbf": "Red Bull Bragantino"
     },
     "Aguirra": {
-      "nome_civil": "Aguirra",
+      "nome_civil": "Felipe Aguirra Soeiro",
       "clube_fonte": "Corinthians",
       "categorias": [
         "Sub-17"
@@ -703,7 +711,8 @@
       "clube_cbf": "Corinthians"
     },
     "Rosenthal": {
-      "nome_civil": "Rosenthal",
+      "nome_civil": "Felipe Maksoud Rosenthal",
+      "registro_fpf": "669586/26",
       "clube_fonte": "Ibrachina FC",
       "categorias": [
         "Sub-17"
@@ -713,7 +722,8 @@
       ]
     },
     "Arthur Gustavo": {
-      "pendente": "sem fonte identificada — o Felipe confirmou em 07/08 que segue sem"
+      "pendente": "sem fonte identificada — o Felipe confirmou em 07/08 que segue sem",
+      "nome_civil_status": "NOME CIVIL PENDENTE (23/08/2026): segue sem fonte identificada (pendencia da casa desde 07/08). Cobrar com o gestor Cristiano."
     }
   },
   "removidos": {
