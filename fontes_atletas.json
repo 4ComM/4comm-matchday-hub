@@ -220,16 +220,6 @@
       "posicao": "Volante",
       "naturalidade": "Brasil (Santo André)"
     },
-    "Gabriel Alves": {
-      "ogol_slug": "gabriel-alves",
-      "ogol_id": "620849",
-      "nascimento": "1999-02-10",
-      "nome_civil": "Gabriel Alcides Alves",
-      "pe": "Canhoto",
-      "situacao_ogol": "Em atividade",
-      "posicao": "Lateral Esquerdo",
-      "naturalidade": "Brasil (São Paulo (SP))"
-    },
     "Nathan Mendes": {
       "ogol_slug": "nathan-mendes",
       "ogol_id": "713981",
@@ -335,20 +325,14 @@
     "Karlos Samuel": {
       "ogol_slug": "karlos-samuel",
       "ogol_id": "809858",
-      "clube_fonte": "Avaí",
-      "categorias": [
-        "Sub-20",
-        "Copinha"
-      ],
-      "federacoes": [
-        "FCF",
-        "CBF"
-      ],
-      "clube_cbf": "Avaí",
+      "clube_fonte": "Sem clube",
+      "categorias": [],
+      "federacoes": [],
       "nome_civil": "Karlos Samuel Bezerra Silva",
       "nascimento": "2006-08-04",
       "situacao_ogol": "Em atividade",
-      "naturalidade": "Brasil (Americana (SP))"
+      "naturalidade": "Brasil (Americana (SP))",
+      "situacao": "SEM CLUBE desde 24/08/2026 — rescisao com o Avai (informe do dono; o gestor Junior Pedroso ja havia relatado no grupo em 17/08 12:39). Sem clube nao ha federacao nem categoria onde procurar sumula: os campos ficam VAZIOS de proposito, fail-closed. Reabrir quando ele assinar com outro clube. O ogol_id e o nome civil ficam — identidade nao muda com o clube."
     },
     "Thiaguinho": {
       "ogol_slug": "thiaguinho",
@@ -729,6 +713,7 @@
   "removidos": {
     "Jhonatan Almeida": "removido do elenco em 07/08/2026 (decisão do Felipe)",
     "Pedro Gomes": "contrato encerrado em 07/08/2026 (decisão do Felipe)",
-    "Laruccia": "auxiliar técnico, não jogador — não entra em planilha de desempenho"
+    "Laruccia": "auxiliar técnico, não jogador — não entra em planilha de desempenho",
+    "Gabriel Alves": "saiu da carteira em 24/08/2026 — nao permanece na empresa (decisao do dono). Historico esportivo de 2026 preservado na base canonica; agenda futura encerrada. Registro de fontes que ele tinha: {\"ogol_slug\": \"gabriel-alves\", \"ogol_id\": \"620849\", \"nascimento\": \"1999-02-10\", \"nome_civil\": \"Gabriel Alcides Alves\", \"pe\": \"Canhoto\", \"situacao_ogol\": \"Em atividade\", \"posicao\": \"Lateral Esquerdo\", \"naturalidade\": \"Brasil (São Paulo (SP))\"}"
   }
 }
