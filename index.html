@@ -255,7 +255,7 @@ let W={g:null,a:null,j:null};
 function wg(){ $('wGest').innerHTML=D.gestores.map(g=>`<span class="chip${W.g===g?' on':''}" onclick="selG('${g}')">${g}</span>`).join(''); }
 function selG(g){W.g=g;W.a=null;W.j=null;wg();wa();$('wsA').classList.remove('hidden');$('wsJ').classList.add('hidden');$('wsF').classList.add('hidden');}
 function wa(){
- const meus=D.atletas.filter(a=>a[3]===W.g||(W.g==='Outro / marketing'&&(a[3]==='—'||a[3]==='(definir)'||!a[3])));
+ const meus=D.atletas.filter(a=>(a[3]||'').split(' + ').includes(W.g)||(W.g==='Outro / marketing'&&(a[3]==='—'||a[3]==='(definir)'||!a[3])));
  const lista=meus.length?meus:D.atletas;
  $('wAtl').innerHTML=(meus.length?'':'<div class="src" style="margin-bottom:8px">Este gestor não tem carteira mapeada — mostrando todos.</div>')+
   lista.map(a=>{
