@@ -213,7 +213,10 @@ function aplicarPapel(){
 const LS={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set(k,v){localStorage.setItem(k,JSON.stringify(v))}};
 function allItems(){
  const ov=LS.get('hub_ov',{});
- const base=D.fila.map((r,i)=>({id:'f'+i,quando:r[0],atleta:r[1],comp:r[2],camada:r[3],prob:r[4],designer:r[5],status:r[6],obs:r[7],link:''}));
+ // id pelo conteúdo, não pela posição: quando a fila é refeita, o status salvo neste navegador
+ // não pode cair em outra peça (com 'f'+i, o "Entregue" de uma peça de agosto passava para a de setembro)
+ const hid=s=>{let h=5381;for(const c of s)h=((h<<5)+h+c.charCodeAt(0))|0;return (h>>>0).toString(36);};
+ const base=D.fila.map((r,i)=>({id:'f'+hid(r[0]+'|'+r[1]+'|'+r[2]),quando:r[0],atleta:r[1],comp:r[2],camada:r[3],prob:r[4],designer:r[5],status:r[6],obs:r[7],link:''}));
  base.forEach(b=>{const o=ov[b.id];if(o)Object.assign(b,o);});
  return base.concat(LS.get('hub_new',[]));
 }
