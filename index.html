@@ -381,7 +381,7 @@ function agendaRows(){
  return rows;
 }
 function renderAgenda(f){f=(f||'').toLowerCase();
- $('tbAg').innerHTML=agendaRows().filter(r=>!f||Object.values(r).join(' ').toLowerCase().includes(f)).map(r=>{
+ $('tbAg').innerHTML=agendaRows().filter(r=>{const d=diasAte(r.quando);return d===null||d>=0;}).filter(r=>!f||Object.values(r).join(' ').toLowerCase().includes(f)).map(r=>{
   const att=[r.gA?'<span class="gA">gatilho A → especial</span>':'',esc(r.alerta)].filter(Boolean).join(' · ');
   return `<tr${r.alerta.includes('OPT-OUT')||r.fonte.includes('NÃO produzir')||r.fonte.includes('preservado')?' style="opacity:.5"':''}>
   <td style="white-space:nowrap;font-weight:600">${esc(r.quando)}<br><span class="src">${esc(r.hora)}</span></td>
